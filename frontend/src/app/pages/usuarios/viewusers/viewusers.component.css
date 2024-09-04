@@ -1,0 +1,14 @@
+
+.selected-row {
+  background-color: #5FBEF3; /* Cambia este valor al color deseado para la fila seleccionada */
+}
+.table-hover2 tr:not(.selected-row):hover {
+  background-color: #eeeff1; /* Cambia a tu color oscuro deseado */
+
+}
+
+.tabla-container {
+  /* width: 800px;  Ancho fijo */
+   height: 700%; /* Alto fijo */
+   overflow: auto; /* Agrega una barra de desplazamiento si es necesario */
+ }

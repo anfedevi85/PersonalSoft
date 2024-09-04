@@ -1,0 +1,156 @@
+	<!--begin::Basic info-->
+    <div class="card mb-5 mb-xl-10">
+        <!--begin::Card header-->
+        <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_profile_details" aria-expanded="true" aria-controls="kt_account_profile_details">
+            <!--begin::Card title-->
+            <div class="card-title m-0">
+                <h3 class="fw-bolder m-0">Add User</h3>
+            </div>
+            <!--end::Card title-->
+        </div>
+        <!--begin::Card header-->
+        <!--begin::Content-->
+        <div id="kt_account_settings_profile_details" class="collapse show">
+            <!--begin::Form-->
+            <form id="kt_account_profile_details_form" class="form" [formGroup]="newUserForm" ngNativeValidate  (ngSubmit)="addUser()" >
+                <!--begin::Card body-->
+                <div class="card-body border-top p-9">
+                  <!--begin::Input group-->
+                    <div class="row mb-4">
+                        <!--begin::Label-->
+                        <label for="" class="col-lg-2 col-form-label required fw-bold fs-6">Name</label>
+                        <!--end::Label-->
+                        <!--begin::Col-->
+                        <div class="col-lg-4">
+                            <div class="fv-row">
+                                <input type="text" name="name" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Name" formControlName="name" required />
+                            </div>
+                        </div>
+
+                        <label for="" class="col-lg-2 col-form-label  fw-bold fs-6">Phone</label>
+                        <!--end::Label-->
+                        <!--begin::Col-->
+                        <div class="col-lg-4">
+                            <div class="fv-row">
+                                <input type="number" name="phone" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Phone Number" formControlName="phone" />
+                            </div>
+                        </div>
+                        <!--end::Col-->
+                    </div>
+                    <!--end::Input group-->
+
+
+                          <!--begin::Input group-->
+                          <div class="row mb-4">
+                            <!--begin::Label-->
+                            <label for="" class="col-lg-2 col-form-label required  fw-bold fs-6">Email</label>
+                            <!--end::Label-->
+                            <!--begin::Col-->
+                            <div class="col-lg-4">
+                                <div class="fv-row">
+                                    <input type="email" name="email" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Email" formControlName="email" required/>
+                                </div>
+                            </div>
+
+                            <label for="" class="col-lg-2 col-form-label  fw-bold fs-6">Address</label>
+                            <!--end::Label-->
+                            <!--begin::Col-->
+                            <div class="col-lg-4">
+                                <div class="fv-row">
+                                    <input type="text" name="direccion" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Address" formControlName="address" />
+                                </div>
+                            </div>
+                            <!--end::Col-->
+                        </div>
+                        <!--end::Input group-->
+
+
+                        <!--end::Input group-->
+
+
+
+                      <!--begin::Input group-->
+                      <div class="row mb-4">
+                        <!--begin::Label-->
+
+                        <label for="" class="col-lg-2 col-form-label required  fw-bold fs-6">Rol</label>
+                        <!--end::Label-->
+                         <!--begin::Col-->
+                         <div class="col-lg-4 fv-row">
+                            <select name="rol" aria-label="Select a rol" data-control="select2" data-placeholder="Select..." class="form-select form-select-solid form-select-lg fw-bold" formControlName="rol" required>
+                                <option value="" disabled>Select...</option>
+                                <option value="SuperAdmin">SuperAdmin</option>
+                                <option value="Admin-3">Administrator - Level 3</option>
+                                <option value="Admin-2">Administrator - Level 2</option>
+                                <option value="Admin-1">Administrator - Level 1</option>
+                                <option value="Standard">Standard</option>
+                                <option value="Basic">Basic</option>
+                                <option value="Vendor">Vendor Link</option>
+                                <!-- <option value="User">User</option> -->
+                                <!-- <option value="Owner">Property Owner</option>
+                                <option value="Tenant">Tenant</option>
+                                <option value="Customer">Customer</option> -->
+                                <!-- <option value="Insurance Company">Insurance Company</option> -->
+                                <!-- <option value="Project Manager">Project Manager</option> -->
+                            </select>
+                        </div>
+                        <!--end::Col-->
+                        <label for="" class="col-lg-2 col-form-label  fw-bold fs-6">Position</label>
+                        <!--end::Label-->
+                        <!--begin::Col-->
+                        <div class="col-lg-4">
+                            <div class="fv-row">
+                                <input type="text" name="cargo" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Position in the Company" formControlName="position" />
+                            </div>
+                        </div>
+                        <!--end::Col-->
+                      </div>
+
+                    <div *ngIf="companies" class="row mb-4">
+
+                        <label for=""  class="col-lg-2 col-form-label required fw-bold fs-6">Company</label>
+                        <!--end::Label-->
+
+                        <!--begin::Col-->
+                        <div  class="col-lg-4 fv-row">
+                            <select name="company" aria-label="Select a Country" data-control="select2" data-placeholder="Select..." class="form-select form-select-solid form-select-lg fw-bold" formControlName="company">
+                                <option value="" disabled>Select</option>
+                                <option *ngFor="let item of companies" [value]="item._id">{{item.name}}</option>
+                            </select>
+                        </div>
+                        <!--end::Col-->
+
+
+
+                    </div>
+
+                    <!--end::Input group-->
+                </div>
+                <!--end::Card body-->
+                <!--begin::Actions-->
+                <div class="card-footer row">
+
+
+                  <div class="col d-flex justify-content-start">
+                      <button type="button" (click)="back()" class="btn btn-primary me-2">Back</button>
+                  </div>
+                  <div class="col d-flex justify-content-end">
+                      <button type="button" class="btn btn-light btn-active-light-primary me-2">Cancel</button>
+                      <button type="submit" class="btn btn-primary" id="kt_account_profile_details_submit">Save</button>
+                  </div>
+
+              </div>
+                <!--end::Actions-->
+            </form>
+            <!--end::Form-->
+        </div>
+
+
+
+
+
+
+        <!--end::Content-->
+    </div>
+    <!--end::Basic info-->
+

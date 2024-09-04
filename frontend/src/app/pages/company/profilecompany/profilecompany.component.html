@@ -1,0 +1,251 @@
+<div class="d-flex flex-column flex-column-fluid" id="kt_content" >
+
+
+     <!--begin::Toolbar-->
+     <div class="toolbar" id="kt_toolbar">
+      <!--begin::Container-->
+      <div id="kt_toolbar_container" class="row container-fluid d-flex flex-stack">
+        <!--begin::Page title-->
+        <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center me-3 flex-wrap lh-1">
+
+          <!--begin::Title-->
+          <!-- <div class="col-1"></div> -->
+          <div class="col-11">
+
+            <h1 class="d-flex align-items-center text-dark fw-bold my-1 fs-3">PERFIL EMPRESA</h1>
+          </div>
+          <!--end::Title-->
+
+          <div class=" row col-1">
+            <div class="col-7"></div>
+            <div class="col-4">
+
+              <button *ngIf="disabledForm" type="button" (click)="editButton()" class="text-end btn btn-danger m-0 mt-0"><i class="fa-solid fa-pen-clip"></i></button>
+            </div>
+          </div>
+
+
+        </div>
+        <!--end::Page title-->
+
+      </div>
+      <!--end::Container-->
+    </div>
+    <!--end::Toolbar-->
+
+
+<!--begin::Basic info-->
+  <div class="card mt-0">
+
+    <!--begin::Content-->
+    <div *ngIf="company" id="kt_account_settings_profile_details" class="collapse show">
+        <!--begin::Form-->
+        <form  id="kt_account_profile_details_form" class="form" [formGroup]="editCompanyForm" ngNativeValidate  (ngSubmit)="editCompany()">
+            <!--begin::Card body-->
+            <div class="card-body border-top">
+
+              <!--begin::Input group-->
+              <div class="row mb-4 ">
+                <div class="col-1">
+
+                </div>
+                <div class="col-5">
+                  <h2 class="card-title titulos">INFORMACION GENERAL</h2>
+                </div>
+
+
+              </div>
+              <hr class="mb-4 border-primary">
+
+              <div class="row">
+
+
+                <div class="col-1"></div>
+                <div class="col-5">
+
+                  <div class="text-end">
+
+
+
+                    <a [hidden]="disabledForm || imgTemp==='../../../../assets/media/varias/noimage.jpg'" class="btn btn-icon btn-circle btn-color-muted btn-active-color-primary w-40px h-40px bg-body shadow "
+                    data-kt-image-input-action="remove"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="right"
+                    data-bs-dismiss="click"
+                    title="Remove Image"
+                    (click)="deleteImage()" (keyup)="deleteImage()"
+                    >
+                    <i class="ki-outline ki-cross fs-3"></i>
+                    </a>
+
+                  </div>
+
+                  <label for="file" class="text-center">
+
+
+                <img *ngIf="!imgTemp"  class="img-fluid" [src]="imagen" alt="" style="width: 40vw; height: 45vh" />
+                <img *ngIf="imgTemp"  class="img-fluid" [src]="imgTemp" alt="" style="width: 40vw; height: 45vh"/>
+
+
+
+                  </label>
+
+                  <input [disabled]="disabledForm" type="file" id="file"  accept="image/*, .pdf"  (change)="cambiarArchivo($event)"  style="display: none;visibility: none;">
+
+
+                  <!-- <button class="btn btn-success " type="button" (click)="sendFile()"  >guardar</button> -->
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div class="col-1"></div>
+                <div class="col-5">
+
+                <div class="row">
+                  <div class="col-4">
+                      <label for="" class="col-form-label fw-bold">NOMBRE</label>
+                  </div>
+                  <div class="col-8 p-1 g-0">
+                    <input type="text" name="name" class="form-control form-control-solid" placeholder="Company Name" formControlName="name" required [readOnly]="disabledForm" />
+                  </div>
+                </div>
+
+                <div div class="row">
+                  <div class="col-4 ">
+                     <label for="" class="col-form-label fw-bold">DIRECCION</label>
+                  </div>
+                  <div class="col-8 row g-0">
+                     <div class="col-3 g-0 p-1">
+                          <input type="text" name="unit" class=" form-control form-control-solid fs-6" placeholder="Unit" formControlName="unit" [readOnly]="disabledForm"  />
+                        </div>
+                        <div *ngIf="!disabledForm" class="col-9 p-1 g-0">
+                          <input type="text" appAutofilladdress (placeSelected)="companyAddress($event)" name="street" autocomplete="off" class="form-control form-control-lg form-control-solid fs-6" placeholder="Street" formControlName="street"/>
+                        </div>
+                        <div *ngIf="disabledForm" class="col-9 p-1 g-0">
+                          <input type="text" name="street" autocomplete="off" class="form-control form-control-lg form-control-solid fs-6" placeholder="Street" formControlName="street"  readonly />
+                        </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-4">
+                      <label for="" class="col-form-label  fw-bold">TELEFONO</label>
+                  </div>
+                  <div class="col-8 p-1 g-0">
+                     <input type="text" name="phone" appPhoneformat class="form-control form-control-lg form-control-solid mb-lg-0" placeholder="-" formControlName="officePhone" required [readOnly]="disabledForm" />
+                  </div>
+                </div>
+
+
+                <div class="row">
+                  <div class="col-4">
+                    <label for="" class="col-form-label fw-bold">EMAIL</label>
+                  </div>
+                  <div class="col-8 p-1 g-0">
+                    <input type="email" name="email" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="-" formControlName="officeEmail" required [readOnly]="disabledForm" />
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-4">
+                    <label for="" class="col-form-label fw-bold mt-2">WEBSITE</label>
+                  </div>
+                  <div class="col-8 p-1 g-0">
+                    <input type="text" name="website" class="form-control form-control-lg form-control-solid" placeholder="-" formControlName="website" required [readOnly]="disabledForm" />
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-4">
+                    <label for="" class=" col-form-label fw-bold fs-6 mt-2">NOMBRE LEGAL</label>
+                  </div>
+                  <div class="col-8 p-1 g-0">
+                    <input type="text" name="legalname" class="form-control form-control-lg form-control-solid" placeholder="-" formControlName="legalName" required  [readOnly]="disabledForm"/>
+                  </div>
+                </div>
+
+
+                <div div class="row">
+                  <div class="col-4 ">
+                     <label for="" class="col-form-label fw-bold">DIRECCION 2</label>
+                  </div>
+                  <div class="col-8 row g-0">
+                     <div class="col-3 g-0 p-1">
+                          <input type="text" name="unit" class=" form-control form-control-solid fs-6" placeholder="Unit" formControlName="billingUnit" [readOnly]="disabledForm"  />
+                        </div>
+                        <div *ngIf="!disabledForm" class="col-9 p-1 g-0">
+                          <input type="text" appAutofilladdress (placeSelected)="companyAddress($event)" name="street" autocomplete="off" class="form-control form-control-lg form-control-solid fs-6" placeholder="Street" formControlName="billingStreet"/>
+                        </div>
+                        <div *ngIf="disabledForm" class="col-9 p-1 g-0">
+                          <input type="text" name="street" autocomplete="off" class="form-control form-control-lg form-control-solid fs-6" placeholder="Street" formControlName="billingStreet"  readonly />
+                        </div>
+                  </div>
+                </div>
+
+
+
+                <div class="row">
+                  <div class="col-4">
+                    <label for="" class="col-form-label fw-bold fs-6 mt-2">TELEFONO 2</label>
+                  </div>
+                  <div class="col-8 p-1 g-0">
+                    <input type="text" name="billingPhone" appPhoneformat class="form-control form-control-lg form-control-solid" placeholder="-" formControlName="billingPhone" required [readOnly]="disabledForm"/>
+                  </div>
+                </div>
+
+
+                <div class="row">
+                  <div class="col-4">
+                    <label for="" class="col-form-label fw-bold fs-6 mt-2">EMAIL 2</label>
+                  </div>
+                  <div class="col-8 p-1 g-0">
+                    <input type="email" name="billingEmail" class="form-control form-control-lg form-control-solid " placeholder="" formControlName="billingEmail" required [readOnly]="disabledForm"/>
+                  </div>
+                </div>
+
+
+                </div>
+
+              </div>
+
+
+              <hr class="mb-4 border-primary">
+              <!--end::Input group-->
+               <!--begin::Input group-->
+
+             <!--end::Input group-->
+
+
+          </div>
+          <!--end::Card body-->
+          <!--begin::Actions-->
+          <div class="card-footer row g-0">
+            <div *ngIf="!disabledForm" class="fixed-bottom-right col d-flex justify-content-end">
+                <button type="button" (click)="cancelar()" class="btn btn-light btn-active-light-primary me-2">Cancel</button>
+                <button type="submit" class="btn btn-primary" id="kt_account_profile_details_submit">Save</button>
+            </div>
+
+        </div>
+          <!--end::Actions-->
+        </form>
+        <!--end::Form-->
+    </div>
+    <!--end::Content-->
+</div>
+<!--end::Basic info-->
+
+
+</div>

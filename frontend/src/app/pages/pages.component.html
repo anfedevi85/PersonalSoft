@@ -1,0 +1,30 @@
+<!--begin::App-->
+<div id="kt_body" data-kt-aside-minimize="on"  class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed toolbar-tablet-and-mobile-fixed aside-enabled aside-fixed" style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px">
+<!--begin::Main-->
+		<!--begin::Root-->
+    <div class="d-flex flex-column flex-root">
+    <!--begin::Page-->
+    <div class="page d-flex flex-row flex-column-fluid">
+      <!--begin::Aside-->
+    <app-sidebar></app-sidebar>
+      <!--end::Aside-->
+      <!--begin::Wrapper-->
+    <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+      <!--begin::Header-->
+      <app-header></app-header>
+      <!--end::Header-->
+      <!--begin::Content-->
+      <router-outlet></router-outlet>
+      <!--end::Content-->
+      <!--begin::Footer-->
+      <!-- <app-footer></app-footer> -->
+      <!--end::Footer-->
+    </div>
+    <!--end::Wrapper-->
+  </div>
+  <!--end::Page-->
+    </div>
+<!--end::Root-->
+</div>
+<!--end::Modals-->
+<!-- <app-profile></app-profile> -->

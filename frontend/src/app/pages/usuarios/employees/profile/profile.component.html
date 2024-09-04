@@ -1,0 +1,295 @@
+
+
+<button hidden  #miBoton type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#profile_modal">
+  Launch demo modal
+</button>
+
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" id="profile_modal" >
+   <!-- aria-labelledby="staticBackdropLabel" aria-hidden="true"> -->
+  <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h3 class="modal-title font-px11 montserrat-bold">USER PROFILE</h3>
+
+              <!--begin::Close-->
+
+              <div  class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close" (click)="back()">
+                <i  class="ki-duotone ki-cross fs-1"><span class="path1"></span><span class="path2"></span></i>
+              </div>
+
+
+
+
+              <!--end::Close-->
+          </div>
+          <div class="modal-body">
+            <h3 class="font-px8 montserrat">{{user.company.name}}</h3>
+
+              <!--begin::Form-->
+        <form class="form" [formGroup]="editUserForm" ngNativeValidate  (ngSubmit)="editUser()">
+          <!--begin::Card body-->
+          <div class="card-body">
+
+            <div class="row p-4 mb-2">
+              <div class="col-6">
+                <h1 for="" class="row font-px10 montserrat-bold ">USER ID</h1>
+                <h1 for="" class="row font-px9 montserrat">created:</h1>
+              </div>
+              <div class="col-6">
+                <h1 for="" class="row font-px10 montserrat-bold">{{user.email}}</h1>
+                <h1 for="" class="row font-px8 montserrat">{{user.createdAt | date:'dd MMM yyyy'}}</h1>
+              </div>
+            </div>
+               <!--begin::Input group-->
+               <div class="row p-2">
+
+                <!--end::Col-->
+                    <!--begin::Label-->
+
+                    <div class="col-3">
+                      <label for="" class="row p-3 font-px8 montserrat-bold">NAME</label>
+                      <label for="" class="row p-3 font-px8 montserrat-bold mt-3">EMAIL</label>
+                      <label for="" class="row p-3 font-px8 montserrat-bold mt-3">PHONE NUMBER</label>
+                      <label for="" class="row p-3 font-px8 montserrat-bold mt-3">POSITION</label>
+                      <!-- <label for="" class="row col-form-label justify-content-end fw-bold p-6">UPDATE PASSWORD</label> -->
+                    </div>
+                    <!--end::Label-->
+                    <!--begin::Col-->
+                    <div class="col-lg-9">
+
+                      <div class="row fv-row mb-1">
+                        <div class="col-12">
+                          <input type="text" class="form-control form-control-sm form-control-solid font-px9 montserrat mb-3 mb-lg-0" placeholder="First" [value]="user.name" readonly/>
+                        </div>
+                        <!-- <div class="col-6">
+                          <input type="text" name="lastname" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Last" formControlName="lastname" required />
+                        </div> -->
+                    </div>
+
+                      <div class="row fv-row mb-1">
+                        <div class="col-12">
+                          <input type="email" autocomplete="off" class="form-control form-control-sm form-control-solid font-px9 montserrat mb-3 mb-lg-0" placeholder="" [value]="user.email" readonly />
+                        </div>
+                    </div>
+
+                    <div class="row fv-row mb-1">
+                      <div class="col-12">
+                        <input type="text"  appPhoneformat class="form-control form-control-sm form-control-solid font-px9 montserrat mb-3 mb-lg-0" placeholder="( ) -" [value]="user.phone" readonly  />
+                      </div>
+                  </div>
+
+                  <div class="row fv-row mb-1">
+                    <div class="col-12">
+                      <input type="text"  class="form-control form-control-sm form-control-solid font-px9 montserrat mb-3 mb-lg-0" [value]="user.position"  readonly/>
+                    </div>
+                </div>
+
+
+                    </div>
+
+
+                </div>
+                    <!--end::Col-->
+
+
+                <div class="row p-4">
+
+
+                      <div class="col-4 text-center">
+                        <br>
+                        <button [hidden]="user.resetPassword" class="btn btn-primary font-px10 montserrat-bold btn-block my-2">CREATE NEW PASSWORD</button>
+                        <button [hidden]="!user.resetPassword" class="btn btn-primary btn-block font-px10 montserrat-bold my-2">RESET PASSWORD</button>
+                      </div>
+
+
+
+                      <div  class="col-8 p-2">
+
+                        <div class="row col-11">
+
+                          <div class="position-relative mb-2">
+                            <input class="form-control form-control-sm form-control-solid" type="password" placeholder="New Password" formControlName="password" (input)="cadena()" #miInput autocomplete="off" (click)="isCollapsed = false " (keyup)="isCollapsed = false "
+                            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic"/>
+
+                            <div id="collapseBasic" class="border" [collapse]="isCollapsed">
+                              <div class="well well-lg card card-block card-header font-px9 montserrat-bold">Your password must include the following:</div>
+                              <div class="row col-11">
+                                <div class="position-relative mb-1">
+
+
+                                    <!--begin::Alert-->
+                                    <!-- <div class="alert d-flex align-items-center p-1" [ngClass]="{ 'alert-success': caracteres, 'alert-danger': !caracteres }"> -->
+                                    <div class="alert d-flex align-items-center p-0">
+                                      <!--begin::Icon-->
+                                      <i class="ki-duotone ki-shield-cross fs-5 text-danger me-2" [ngClass]="{ 'text-success': caracteres, 'text-danger': !caracteres }"><span class="path1"></span><span class="path2"></span></i>
+                                      <!-- <i [hidden]="!caracteres" class="ki-duotone ki-shield-tick fs-5 text-success me-2"><span class="path1"></span><span class="path2"></span></i> -->
+                                      <!--end::Icon-->
+
+                                      <!--begin::Wrapper-->
+                                      <div class="d-flex flex-column">
+
+                                          <!--begin::Content-->
+                                          <span class="font-px9 montserrat-bold" [ngClass]="{ 'text-success': caracteres, 'text-danger': !caracteres }">8 characters minimum</span>
+                                          <!--end::Content-->
+                                      </div>
+                                      <!--end::Wrapper-->
+
+                                    </div>
+                                    <!--end::Alert-->
+
+                                    <!--begin::Alert-->
+                                    <div class="alert  d-flex align-items-center p-0">
+                                      <!--begin::Icon-->
+                                      <i class="ki-duotone ki-shield-cross fs-5 me-2" [ngClass]="{ 'text-success': mayusculas, 'text-danger': !mayusculas }"><span class="path1"></span><span class="path2"></span></i>
+                                      <!-- <i [hidden]="!mayusculas" class="ki-duotone ki-shield-tick fs-5 text-success me-2"><span class="path1"></span><span class="path2"></span></i> -->
+                                      <!--end::Icon-->
+
+                                      <!--begin::Wrapper-->
+                                      <div class="d-flex flex-column">
+
+                                          <!--begin::Content-->
+                                          <span class="font-px9 montserrat-bold" [ngClass]="{ 'text-success': mayusculas, 'text-danger': !mayusculas }">1 uppercase letter (A - Z)</span>
+                                          <!--end::Content-->
+                                      </div>
+                                      <!--end::Wrapper-->
+                                    </div>
+                                    <!--end::Alert-->
+                                    <!--begin::Alert-->
+                                    <div class="alert d-flex align-items-center p-0">
+                                      <!--begin::Icon-->
+                                      <i  class="ki-duotone ki-shield-cross fs-5  me-2" [ngClass]="{ 'text-success': minusculas, 'text-danger': !minusculas }"><span class="path1"></span><span class="path2"></span></i>
+                                      <!-- <i [hidden]="!minusculas" class="ki-duotone ki-shield-tick fs-5 text-success me-2"><span class="path1"></span><span class="path2"></span></i> -->
+                                      <!--end::Icon-->
+
+                                      <!--begin::Wrapper-->
+                                      <div class="d-flex flex-column">
+
+                                          <!--begin::Content-->
+                                          <span class="font-px9 montserrat-bold" [ngClass]="{ 'text-success': minusculas, 'text-danger': !minusculas }">1 lowercase letter (a - z)</span>
+                                          <!--end::Content-->
+                                      </div>
+                                      <!--end::Wrapper-->
+                                    </div>
+                                    <!--end::Alert-->
+
+                                     <!--begin::Alert-->
+                                    <div class="alert d-flex align-items-center p-0">
+                                      <!--begin::Icon-->
+                                      <i class="ki-duotone ki-shield-cross fs-5  me-2" [ngClass]="{ 'text-success': numeros, 'text-danger': !numeros }"><span class="path1"></span><span class="path2"></span></i>
+                                      <!-- <i [hidden]="!numeros" class="ki-duotone ki-shield-tick fs-5 text-success me-4"><span class="path1"></span><span class="path2"></span></i> -->
+                                      <!--end::Icon-->
+
+                                      <!--begin::Wrapper-->
+                                      <div class="d-flex flex-column">
+
+                                          <!--begin::Content-->
+                                          <span class="font-px9 montserrat-bold"  [ngClass]="{ 'text-success': numeros, 'text-danger': !numeros }">1 number (0 - 9)</span>
+                                          <!--end::Content-->
+                                      </div>
+                                      <!--end::Wrapper-->
+                                    </div>
+                                    <!--end::Alert-->
+
+                                    <!--begin::Alert-->
+                                    <div class="alert d-flex align-items-center p-0" >
+                                      <!--begin::Icon-->
+                                      <i class="ki-duotone ki-shield-cross fs-5 me-2" [ngClass]="{ 'text-success': simbolos, 'text-danger': !simbolos }"><span class="path1"></span><span class="path2"></span></i>
+                                      <!-- <i [hidden]="!simbolos" class="ki-duotone ki-shield-tick fs-5 text-success me-4"><span class="path1"></span><span class="path2"></span></i> -->
+                                      <!--end::Icon-->
+
+                                      <!--begin::Wrapper-->
+                                      <div class="d-flex flex-column">
+
+                                          <!--begin::Content-->
+                                          <span class="font-px9 montserrat-bold" [ngClass]="{ 'text-success': simbolos, 'text-danger': !simbolos }">1 special character (! @ # $ %)</span>
+                                          <!--end::Content-->
+                                      </div>
+                                      <!--end::Wrapper-->
+                                    </div>
+                                    <!--end::Alert-->
+
+
+                                </div>
+
+
+
+
+                              </div>
+                            </div>
+                            <!--begin::Visibility toggle-->
+                                <!-- <span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2" data-kt-password-meter-control="visibility">
+                                <i class="ki-duotone ki-eye-slash fs-1"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
+                                <i class="ki-duotone ki-eye d-none fs-1"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+                                </span> -->
+                          </div>
+                          <!--end::Visibility toggle-->
+
+
+                        </div>
+
+
+
+
+
+                        <div class="row col-11">
+                          <div class="position-relative mb-2">
+                            <input type="password" name="newPassword2" class="form-control form-control-sm form-control-solid mb-2 mb-lg-0" placeholder="Retype New Password" formControlName="newPassword2"  (click)="isCollapsed = true" autocomplete="off" />
+
+                          </div>
+
+                        </div>
+
+
+                      </div>
+
+
+
+                </div>
+
+
+
+
+
+
+                <br><br>
+
+                <div  class="row text-center">
+
+                  <h3 class="font-px10 montserrat-bold" >USER e-SIGNATURE</h3>
+                  <div class="col-1"></div>
+                  <div class="col-10">
+
+                    <div class="separator border-black"></div>
+
+
+                    <app-signaturepad id="signaturePad" signaturePadOptions [userID]="user._id || ''" [hidden]="user.signature"></app-signaturepad>
+                  </div>
+
+                  <div [hidden]="!user.signature">
+                    <img [src]="user.signature" alt="Signature">
+                    <button type="button" class="btn btn-primary col-3 my-5" (click)="resetSignature()" >RESET SIGNATURE</button>
+                  </div>
+                </div>
+          </div>
+        <!--end::Input group-->
+        <!--end::Card body-->
+        <!--begin::Actions-->
+        <!-- <div class="card-footer row">
+          <div class="col d-flex justify-content-end">
+              <button type="button" data-bs-dismiss="modal" class="btn btn-light btn-active-light-primary me-2">Cancel</button>
+              <button type="submit" class="btn btn-primary" id="kt_account_profile_details_submit">Save</button>
+          </div>
+      </div> -->
+        <!--end::Actions-->
+      </form>
+      <!--end::Form-->
+          </div>
+
+          <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+          </div> -->
+      </div>
+  </div>
+</div>

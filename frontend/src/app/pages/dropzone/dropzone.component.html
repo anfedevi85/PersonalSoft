@@ -1,0 +1,25 @@
+
+<div class="custome-dropzone dropzone" id="kt_dropzonejs_example_1" ngx-dropzone [maxFileSize]="200000000" [accept]="'image/* , application/*'" (change)="onSelect($event)">
+
+  <ngx-dropzone-label>
+    <div class="dz-message needsclick">
+      <i class="ki-duotone ki-file-up fs-3x text-primary"><span class="path1"></span><span class="path2"></span></i>
+
+      <!--begin::Info-->
+      <div class="ms-4">
+          <h3 class="fs-5 fw-bold text-gray-900 mb-1 mt-1">Drop files here or click to upload.</h3>
+          <span class="text-primary fs-7 fw-semibold mb-4">(Max size 20MB)</span>
+      </div>
+      <!--end::Info-->
+  </div>
+  </ngx-dropzone-label>
+<ngx-dropzone-preview ngProjectAs="ngx-dropzone-preview" [removable]="true" *ngFor="let f of files" [file]="f" (removed)="onRemove(f)">
+  <ngx-dropzone-label class="text-black">
+    <i *ngIf="f.type === 'application/vnd.ms-excel'||f.type==='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'" class="fa-solid fa-file-excel fs-3x"></i>
+    <i *ngIf="f.type==='application/msword'|| f.type==='application/vnd.openxmlformats-officedocument.wordprocessingml.document'" class="fa-solid fa-file-word fs-3x"></i>
+    <i *ngIf="f.type === 'image/png' || f.type === 'image/gif'|| f.type === 'image/jpeg'" class="fa-solid fa-image fs-3x"></i>
+    <i *ngIf="f.type === 'application/pdf'" class="fa-solid fa-file-pdf fs-3x"></i>
+    <br>{{ f.name }} <br> <span class="text-primary">{{(f.size/1000000).toFixed(2)}}MB</span>
+  </ngx-dropzone-label>
+</ngx-dropzone-preview>
+</div>

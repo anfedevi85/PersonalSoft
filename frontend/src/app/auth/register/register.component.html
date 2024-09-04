@@ -1,0 +1,409 @@
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+
+  <div class="row mx-4">
+
+<div class="col-7">
+  <img src="../../../assets/media/varias/registro.jpeg" class="img-fluid" alt="">
+</div>
+<div class="col-5">
+
+  <!--begin::Post-->
+  <div class="post d-flex flex-column-fluid" id="kt_post">
+    <!--begin::Container-->
+    <div class="container-xxl">
+      <!--begin::Card-->
+      <div class="card">
+        <!--begin::Card body-->
+        <div class="card-body">
+          <!--begin::Stepper-->
+          <div class="stepper stepper-links d-flex flex-column">
+
+            <!--begin::Form-->
+            <form class="mx-auto mw-600px w-100" ngNativeValidate [formGroup]="registerForm" (ngSubmit)="registerCompany()" >
+
+
+              <!--begin::Step 1-->
+                <div *ngIf="menuCurrent ===1 " class="w-100">
+
+                  <div class="text-center mx-10 mt-5">
+                    <!--begin::Title-->
+                    <!-- <h1 class="text-dark fw-bolder mb-3 p-10">Sign In</h1> -->
+                    <img src="../../../assets/media/logos/preferredLogo.png" alt="" class="logoimg" >
+                    <!--end::Title-->
+                    <!--begin::Subtitle-->
+                    <!--end::Subtitle=-->
+                  </div>
+                  <!--begin::Heading-->
+                  <div class="pb-10 pb-lg-15 mt-10">
+                    <div class="text-center montserrat font-px11">Sign Up for a Free 14 Day Trial</div>
+                    <!--begin::Title-->
+                    <h1 class=" text-center mt-5 montserrat-bold font-px18">WELCOME TO PREFERRED RS</h1>
+                    <!--end::Title-->
+                    <!--begin::Notice-->
+                    <div class="fw-bold text-center text-dark montserrat-bold font-px10 mt-5 ">Thank you for choosing Preferred Restoration Software!</div>
+                    <div class="text-center montserrat font-px10 mt-5">Ready to get started? Let's set up your account!</div>
+                    <!-- <a href="#" class="link-primary fw-bold">Ready to get started? Let's set up your account!</a>.</div> -->
+                    <!--end::Notice-->
+                  </div>
+                  <!--end::Heading-->
+                </div>
+              <!--end::Step 1-->
+
+
+              <!--begin::Step 2-->
+              <div *ngIf="menuCurrent ===2" class="w-100">
+                <!--begin::Heading-->
+                <div class="pb-5 pb-lg-10">
+                  <!--begin::Title-->
+                  <h1 class="montserrat-bold font-px18 mt-2">COMPANY PROFILE</h1>
+                  <!--end::Title-->
+                  <!--begin::Notice-->
+                  <div class=" montserrat-bold font-px10 mt-10">LET'S START BY ENTERING YOUR COMPANY DETAILS
+                  <!-- <a href="#" class="link-primary fw-bold">Help Page</a>. -->
+                </div>
+                  <!--end::Notice-->
+                </div>
+                <!--end::Heading-->
+                <!--begin::Input group-->
+                <div class="fv-row mb-5">
+                  <!--begin::Label-->
+                  <label for='companyName' class="montserrat-bold font-px8 required">LEGAL NAME</label>
+                  <!--end::Label-->
+                  <!--begin::Input-->
+                  <input type="text" name="companyName" class="form-control form-control-lg form-control-solid" formControlName="companyName" required />
+                  <!--end::Input-->
+                </div>
+                <!--end::Input group-->
+
+                  <!--begin::Input group-->
+                  <div class="fv-row mb-5">
+                    <!--begin::Label-->
+                    <label for="address" class="montserrat-bold font-px8 required">ADDRESS</label>
+                    <!--end::Label-->
+                    <!--begin::Input-->
+                    <input type="text" name="address" appAutofilladdress placeholder="" class="form-control form-control-lg form-control-solid" formControlName="address" required />
+                    <!--end::Input-->
+                  </div>
+                  <!--end::Input group-->
+
+                  <!--begin::Input group-->
+                  <div class="fv-row mb-5">
+                    <!--begin::Label-->
+                    <label for='officePhone' class="montserrat-bold font-px8">PHONE - OFFICE</label>
+                    <!--end::Label-->
+                    <!--begin::Input-->
+                    <input type="text" name="officePhone" appPhoneformat class="form-control form-control-lg form-control-solid" formControlName="officePhone" />
+                    <!--end::Input-->
+                  </div>
+                  <!--end::Input group-->
+
+                <!--begin::Input group-->
+                <div class="fv-row mb-0">
+                  <!--begin::Label-->
+                  <label for="officeEmail" class="montserrat-bold font-px8">EMAIL - OFFICE</label>
+                  <!--end::Label-->
+                  <!--begin::Input-->
+                  <input type="email" name="officeEmail" class="form-control form-control-lg form-control-solid" formControlName="officeEmail" />
+                  <!--end::Input-->
+                </div>
+                <!--end::Input group-->
+              </div>
+
+              <!--end::Step 2-->
+
+                 <!--begin::Step 3-->
+                <div *ngIf="menuCurrent ===3" class="w-100 mt-5">
+                  <!--begin::Heading-->
+                  <div class="pb-5 pb-lg-10">
+                    <!--begin::Title-->
+                    <h1 class="montserrat-bold font-px18">COMPANY PROFILE</h1>
+                    <!--end::Title-->
+                    <!--begin::Notice-->
+                    <label class="d-flex align-items-center montserrat-bold font-px10 mb-5" for="attachments">NOW WE CAN ADD YOUR COMPANY BRANDING</label>
+                    <!-- <div class="text-muted fw-semibold fs-6">If you need more info, please check out
+                    <a href="#" class="link-primary fw-bold">Help Page</a>.</div> -->
+                    <!--end::Notice-->
+                  </div>
+                  <!--end::Heading-->
+
+                  <!--begin::Input group-->
+                  <div class="mb-5 fv-row">
+                    <label class="montserrat-bold font-px8 mb-3" for="legalName">OPERATING NAME</label>
+                    <input type="text" name="legalName" class="form-control form-control-lg form-control-solid" placeholder="enter if different then legal name" formControlName="legalName" />
+                  </div>
+                  <!--end::Input group-->
+                  <!--begin::Input group-->
+                  <div class="mb-0 fv-row">
+                    <!--begin::Label-->
+                    <!-- <label class="d-flex align-items-center form-label mb-5" for="attachments">NOW LET'S ADD YOUR COMPANY LOGO</label> -->
+                    <!--end::Label-->
+                    <!--begin::Options-->
+
+
+                    <div class="custome-dropzone dropzone"  id="kt_dropzonejs_example_1" ngx-dropzone [multiple]="false" [maxFileSize]="200000000" [accept]="'image/*'"   (change)="onSelect($event)">
+
+                      <ngx-dropzone-label>
+                        <div class="dz-message needsclick">
+                          <i class="ki-duotone ki-file-up fs-3x text-primary"><span class="path1"></span><span class="path2"></span></i>
+
+                          <!--begin::Info-->
+                          <div class="ms-4">
+                              <h3 class="fs-5 fw-bold text-gray-900 mb-1 mt-1">Drop file here or click to upload.</h3>
+                              <span class="fs-7 fw-semibold mb-4">Support: JPEG, JPG, PNG</span><br>
+                              <span class="text-primary fs-7 fw-semibold mb-4">(Max size 20MB)</span>
+                          </div>
+                          <!--end::Info-->
+                      </div>
+                      </ngx-dropzone-label>
+                      <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemove(f)">
+                        <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                      </ngx-dropzone-image-preview>
+                    </div>
+                    <!--end::Options-->
+                    <p class="montserrat-bold font-px8 mb-2 mt-5"> RECOMMENDATION: <span class=" text-gray-600 "  > Upload logo with a White Background</span> </p>
+                    <p class="montserrat-bold font-px8 mb-2 "> RESOLUTION: <span class=" fw-semibold text-gray-600 "  > Minimum 600 x 120 pixels</span> </p>
+                    <p class="montserrat-bold font-px8 "> FORMATS: <span class=" fw-semibold text-gray-600 "  >JPG, PNG, EPS</span> </p>
+                  </div>
+                  <!--end::Input group-->
+                </div>
+              <!--end::Step 3-->
+
+
+              <!--begin::Step 4-->
+                <div *ngIf="menuCurrent ===4 || menuCurrent ===41 " class="w-100">
+                  <!--begin::Heading-->
+                  <div class="pb-10 pb-lg-12">
+                    <!--begin::Title-->
+                    <h1 class="montserrat-bold font-px18 mb-10">User Details</h1>
+                    <!--end::Title-->
+                    <!--begin::Notice-->
+                    <div class="montserrat-bold font-px10 ">NOW IT'S TIME TO CREATE A NEW USER
+                    <!-- <a href="#" class="link-primary fw-bold">Help Page</a>. -->
+                  </div>
+                    <!--end::Notice-->
+                  </div>
+                  <!--end::Heading-->
+                  <!--begin::Input group-->
+                  <div class="fv-row mb-5">
+                    <!--begin::Label-->
+                    <label for="name" class="montserrat-bold font-px8 required">NAME</label>
+                    <!--end::Label-->
+                    <!--begin::Input-->
+                    <input type="text" name="name" class="form-control form-control-lg" formControlName="name" required />
+                    <!--end::Input-->
+                  </div>
+                  <!--end::Input group-->
+
+                  <!--begin::Input group-->
+                    <div class="fv-row mb-5">
+                      <!--begin::Label-->
+                      <label for="phone" class="montserrat-bold font-px8 required">PHONE</label>
+                      <!--end::Label-->
+                      <!--begin::Input-->
+                      <input type="text" name="phone" appPhoneformat  class="form-control form-control-lg " formControlName="phone" required />
+                      <!--end::Input-->
+                    </div>
+                    <!--end::Input group-->
+
+                      <!--begin::Input group-->
+                      <div class="fv-row mb-5">
+                        <!--begin::Label-->
+                        <label for="email" class="montserrat-bold font-px8 required">EMAIL</label>
+                        <!--end::Label-->
+                        <!--begin::Input-->
+                        <input type="email" name="email" class="form-control form-control-lg " formControlName="email" required />
+                        <!--end::Input-->
+                      </div>
+                      <!--end::Input group-->
+
+                  <!-- begin::Input group-->
+                  <div class="fv-row mb-5">
+                    <label for="position" class="montserrat-bold font-px8 required mx-2">Position  </label>
+                    <small class="montserrat font-px8">Recommendation: Owner or Administrator with the highest level permissions within the Company.</small>
+                    <select name="position" class="form-select form-select" data-control="select2" data-placeholder="Select..." data-allow-clear="true" data-hide-search="true" formControlName="position" required>
+                      <option value="" disabled>Select...</option>
+                      <option value="Project Manager">Project Manager</option>
+                      <option value="Manager">Manager</option>
+                      <option value="Owner / Administrator">Owner / Administrator</option>
+                      <option value="Operations Manager">Operations Manager</option>
+                      <option value="Compliance Manager">Compliance Manager</option>
+                      <option value="Other">Other</option>
+                      <!-- <option value="Lead Technician">Lead Technician</option>
+                      <option value="Manager Assitant">Manager Assitant</option>
+                      <option value="Accountant">Accountant</option>
+                      <option value="Bookkeeper">Bookkeeper</option>
+                      <option value="Supervisor">Supervisor</option>
+                      <option value="Administrator">Administrator</option> -->
+                    </select>
+                  </div>
+
+                  <!--end::Input group -->
+
+                  <div class="fv-row mt-10">
+                    <div class="form-check form-check-custom form-check-primary form-check-solid">
+                      <input class="form-check-input" data-bs-toggle="modal" data-bs-target="#terms" type="checkbox" value="true" [disabled]="check"/>
+                      <label class="ml-5 montserrat font-px9 mx-4" for="">
+                        <!-- Sign up to receive emails about product announcements, quick start guides, "how-to" webinars and more!  You may unsubscribe at any time. -->
+                        I have read and agree to Preferred Restoration Software <a href="#" class="text-primary required">Terms of Use</a> and  <a href="#" class="text-primary required">Privacy Policy</a>.
+                      </label>
+                  </div>
+                  </div>
+
+
+
+                  <!-- <div class="fv-row">
+                    <h6 class="text-muted">By signing up for this app, you agree to our Privacy Policy, Terms of Services, and Acceptable Use Policy.</h6>
+                  </div> -->
+                </div>
+              <!--end::Step 4-->
+
+<!--------------------------------------------------------------------->
+<!--modal para terminos y condiciones-->
+<!--------------------------------------------------------------------->
+
+<!--
+<button hidden type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_scrollable_2">
+  modal
+</button> -->
+
+<div class="modal fade" id="terms" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered " role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+
+              <h3 [hidden]="terms" class="montserrat-bold font-px10 modal-title" id="staticBackdropLabel">TERM OF USE</h3>
+              <h3 [hidden]="!terms" class="montserrat-bold font-px10 modal-title" id="staticBackdropLabel">PRIVACY POLICY</h3>
+
+              <!--begin::Close-->
+              <!-- <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+                  <i class="ki-duotone ki-cross fs-2x"><span class="path1"></span><span class="path2"></span></i>
+              </div> -->
+              <!--end::Close-->
+          </div>
+
+          <div class="modal-body text-justify">
+              <p class=" montserrat font-px10">Lorem ipsum dolor sit amet consectetur adipisicing equi perferendis aliquid labore quod minima ab dolor deleniti ducimus ipsa nihil, ad reprehenderit omnis exerc itationem odio dolorum quasi vitae reiciendis mollitia quam similique necessitatibus nam? Commodi aut eveniet ipsam neque. Delectus et tenetur saepe, inventore commodi impedit. Error, pariatur perferendis adipisci est labore sit laboriosam ullam similique itaque voluptates, aut optio tempora sunt soluta nihil exercitationem molestias illo asperiores, tempore quas dolorum? Ex enim tenetur quisquam nam necessitatibus at quasi, iusto itaque distinctio quas laborum consectetur, dignissimos voluptatum tempora non qui tempore! Vitae optio repellendus laboriosam veritatis alias repudiandae incidunt, unde, necessitatibus fugiat hic sit harum labore fugit odit eos cumque blanditiis deleniti inventore impedit distinctio saepe pariatur sed! Dignissimos labore saepe velit sequi sint consequatur, optio distinctio repellat dolores suscipit. Harum quibusdam facere excepturi, vitae nesciunt eaque iusto ducimus modi perferendis rem aliquam quidem inventore recusandae quas ullam repellat aliquid fugit aspernatur explicabo nihil alias? Reprehenderit dolorem veritatis in unde laborum, provident cumque voluptates tenetur itaque nam non, repellat vel, perferendis exercitationem facilis iusto odit eligendi tempora ipsa est voluptatum harum nostrum modi cum! Aperiam ratione perspiciatis, at soluta.</p>
+          </div>
+
+          <div class="modal-footer d-flex justify-content-center">
+              <!-- <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button> -->
+              <button [hidden]="terms" type="button" class="btn btn-sm btn-dark " (click)="acceptTerms()" >ACCEPT</button>
+              <button [hidden]="!terms" type="button" class="btn btn-sm btn-dark " (click)="checkDisable()" data-bs-dismiss="modal">ACCEPT</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+              <!--begin::Step 5-->
+                <div *ngIf="menuCurrent ===5" class="w-100">
+                  <!--begin::Heading-->
+
+                  <div class="text-center p-10 mb-5">
+                    <!--begin::Title-->
+                    <!-- <h1 class="text-dark fw-bolder mb-3 p-10">Sign In</h1> -->
+                    <img src="../../../assets/media/logos/preferredLogo.png" alt="" class="logoimg" >
+                    <!-- <img src="../../../assets/media/logos/preferredLogo.png" alt="" class="img-fluid text-center" style="width: 300px; height: 200px;"> -->
+                    <!--end::Title-->
+                    <!--begin::Subtitle-->
+                    <!--end::Subtitle=-->
+                  </div>
+
+                  <div class="pb-8 pb-lg-10">
+                    <!--begin::Title-->
+                    <h2 class="montserrat-bold font-px18">WOW, THAT WAS EASY!</h2>
+                    <!--end::Title-->
+                    <!--begin::Notice-->
+                    <!-- <div class="text-muted fw-semibold fs-6">If you need more info, please
+                    <a routerLink="/login" class="link-primary fw-bold">Sign In</a>.</div> -->
+                    <!--end::Notice-->
+                  </div>
+                  <!--end::Heading-->
+                  <!--begin::Body-->
+                  <div class="mb-0">
+                    <!--begin::Text-->
+                    <div class="montserrat-bold font-px10 mb-5">We need to confirm your account by verifying your email and phone number.</div>
+                    <!--end::Text-->
+                    <!--begin::Alert-->
+                    <!--begin::Notice-->
+                    <div class="notice d-flex bg-light-warning rounded border-warning border border-dashed p-6">
+                      <!--begin::Icon-->
+                      <i class="ki-outline ki-information fs-2tx text-warning me-4"></i>
+                      <!--end::Icon-->
+                      <!--begin::Wrapper-->
+                      <div class="d-flex flex-stack flex-grow-1">
+                        <!--begin::Content-->
+                        <div class="fw-semibold">
+                          <h4 class="montserrat font-px10">Please check your inbox for a verification email, don't forget to check your junk folder as well. </h4>
+                          <!-- <div class="fs-6 text-gray-700">To start using great tools, please,
+                          <a href="../../demo13/dist/utilities/wizards/vertical.html" class="fw-bold">Create Team Platform</a>
+                        </div> -->
+                        </div>
+                        <!--end::Content-->
+                      </div>
+                      <!--end::Wrapper-->
+                    </div>
+                    <div class="montserrat-bold font-px10 mt-5">You may now close this window.</div>
+                    <!--end::Notice-->
+                    <!--end::Alert-->
+                  </div>
+
+                  <!--end::Body-->
+                </div>
+              <!--end::Step 5-->
+
+
+              <!--begin::Actions-->
+              <div class="d-flex flex-stack pt-15">
+                <!--begin::Wrapper-->
+                <div class="mr-2">
+                  <button [hidden]="menuCurrent === 1 || menuCurrent === 5" (click)="back()" type="button" class="btn btn-lg btn-secondary me-3">
+                  <i class="ki-outline ki-arrow-left bold fs-4 me-1"></i>Back</button>
+                </div>
+                <!--end::Wrapper-->
+                <!--begin::Wrapper-->
+                <div>
+                  <button *ngIf="menuCurrent === 4 && !terms " disabled type="submit" class="btn btn-lg btn-dark me-3" >
+                    <span class="indicator-label">SIGN UP
+                    <i class="ki-outline ki-arrow-right fs-3 ms-2 me-0"></i></span>
+                  </button>
+                  <button *ngIf="menuCurrent ===4 && terms " type="submit" class="btn btn-lg btn-dark me-3" >
+                    <span class="indicator-label">SIGN UP
+                    <i class="ki-outline ki-arrow-right fs-3 ms-2 me-0"></i></span>
+                  </button>
+                  <button type="button" [hidden]="menuCurrent === 4 || menuCurrent ===41 || menuCurrent === 5 || menuCurrent=== 1" (click)="continue()" class="btn btn-lg btn-dark" >Continue
+                  <i class="ki-outline ki-arrow-right fs-4 ms-1 me-0"></i></button>
+                  <button type="button" [hidden]="menuCurrent !== 1" (click)="continue()" class="btn btn-lg btn-dark fw-bold" >GET STARTED
+                    <!-- <i class="ki-outline ki-arrow-right fs-4 ms-1 me-0"></i> -->
+                  </button>
+                </div>
+                <!--end::Wrapper-->
+              </div>
+              <!--end::Actions-->
+            </form>
+            <!--end::Form-->
+          </div>
+          <!--end::Stepper-->
+        </div>
+        <!--end::Card body-->
+      </div>
+      <!--end::Card-->
+    </div>
+    <!--end::Container-->
+  </div>
+  <!--end::Post-->
+</div>
+
+</div>
+</div>
+<!--end::Content-->

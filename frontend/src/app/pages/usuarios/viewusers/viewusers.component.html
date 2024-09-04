@@ -1,0 +1,119 @@
+
+
+      	<!--begin::Tables Widget 11-->
+     <div class="card mb-5 mb-xl-8 mt-4">
+
+       <!--begin::Toolbar-->
+  <div class="toolbar" id="kt_toolbar">
+    <!--begin::Container-->
+    <div id="kt_toolbar_container" class="container-fluid d-flex flex-stack">
+      <!--begin::Page title-->
+      <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center me-3 flex-wrap lh-1">
+        <!--begin::Title-->
+        <h1 class="d-flex align-items-center text-dark fw-bold my-1 fs-3">USER LIST</h1>
+        <!--end::Title-->
+
+      </div>
+      <!--end::Page title-->
+      <div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Click for New Customer">
+        <a (click)="addCompany()" (keyup)="addCompany()" tabindex="" class="btn btn-sm btn-light btn-active-primary" >
+        <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
+        <span class="svg-icon svg-icon-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="currentColor" />
+                <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="currentColor" />
+            </svg>
+        </span>
+        <!--end::Svg Icon-->Add Company</a>
+    </div>
+    </div>
+    <!--end::Container-->
+  </div>
+  <!--end::Toolbar-->
+
+      <!--begin::Body-->
+      <div *ngIf="users" class="card-body py-3">
+          <!--begin::Table container-->
+          <div class="table-responsive tabla-container">
+              <!--begin::Table-->
+              <table datatable class="table table-responsive-md table-hover table-rounded align-middle gs-0 gy-4 text-center"  [dtOptions]="dtOptions" id="usersTable">
+                  <!--begin::Table head-->
+                  <thead>
+                      <tr class="fw-bolder text-muted bg-dark">
+                        <th hidden class="min-w-25px"></th>
+                          <th class="min-w-100px text-center">Name</th>
+                          <th class="min-w-100px text-center">Email</th>
+                          <th class="min-w-80px text-center">Rol</th>
+                          <th class="min-w-120px text-center">Company</th>
+                          <th class="min-w-50px text-center">Status</th>
+                      </tr>
+                  </thead>
+                  <!--end::Table head-->
+                  <!--begin::Table body-->
+                  <tbody>
+                      <tr *ngFor="let item of users" (click)="onRowClick($event, item)" [ngClass]="{'selected-row': item.isSelected}">
+
+                        <td hidden>
+                          <div class="form-check form-check-sm form-check-solid">
+                              <input class="form-check-input" type="checkbox" [id]="item._id" [value]="item._id" />
+                          </div>
+                      </td>
+                          <td class="text-center">
+                              <div class="d-flex align-items-center justify-content-around">
+                                  <!-- <div class="symbol symbol-50px me-5">
+                                      <img src="{{url}}{{item.imagePath}}" class="img-fluid" alt="" />
+                                  </div> -->
+                                  <div class="d-flex justify-content-start flex-column">
+                                      <a class="text-dark fw-bolder text-hover-primary mb-1 fs-6">{{item.name}}</a>
+                                      <!-- <span class="text-muted fw-bold text-muted d-block fs-7">{{item.cargo}}</span> -->
+                                  </div>
+                              </div>
+                          </td>
+                          <td>
+                              <a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{item.email}}</a>
+                              <!-- <span class="text-muted fw-bold text-muted d-block fs-7">{{item.telefono}}</span> -->
+                          </td>
+                          <td>
+                              <a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{item.rol}}</a>
+                              <!-- <span class="text-muted fw-bold text-muted d-block fs-7">Rejected</span> -->
+                          </td>
+                          <td>
+                              <a   class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{item.company.name}}</a>
+                              <!-- <span class="text-muted fw-bold text-muted d-block fs-7">{{item.direccion}}</span> -->
+                          </td>
+                          <td><span [ngClass]="item.status === 'Active'? 'badge badge-success' : item.status === 'Inactive'? 'badge badge-warning':'badge badge-danger'">{{item.status}}</span></td>
+                          <!-- <td>
+                              <span class="badge badge-light-primary fs-7 fw-bold">{{item.userType}}</span>
+                          </td> -->
+                      </tr>
+                  </tbody>
+                  <!--end::Table body-->
+              </table>
+              <!--end::Table-->
+          </div>
+          <!--end::Table container-->
+      </div>
+      <!--begin::Body-->
+      <div id="menuRight" class="text-center" [hidden]="!isMenuOpen">
+
+        <!-- <a (click)="edit()" (keyup)="edit()" tabindex="0" class="btn btn-icon btn-secondary my-4" title="View Company">
+          <i class="ki-duotone ki-eye fs-1"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
+          </a> -->
+          <br><br>
+                 <a (click)="edit()" (keyup)="edit()" tabindex="1" class="p-1 mb-4" data-bs-toggle="tooltip" data-bs-custom-class="tooltip-inverse" data-bs-placement="left" title="Preview">
+                  <i class=" fa-solid fa-eye icon-hover-dark fs-2 text-white"></i>
+                 </a>
+
+
+             <a (click)="delete()" (keyup)="delete()" tabindex="4" class="p-1 mb-4"data-bs-toggle="tooltip" data-bs-custom-class="tooltip-inverse" data-bs-placement="left" title="Delete">
+                              <i class="fa-solid fa-trash icon-hover-dark fs-2 text-white mt-4"></i>
+                              </a>
+
+      </div>
+
+      <div [hidden]="isMenuOpen" id="menuRightClose"></div>
+  </div>
+  <!--end::Tables Widget 11-->
+
+
+

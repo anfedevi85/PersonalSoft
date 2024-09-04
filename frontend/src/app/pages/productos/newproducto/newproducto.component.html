@@ -1,0 +1,228 @@
+	<!--begin::Basic info-->
+  <div class="card mb-5 mb-xl-10">
+    <!--begin::Card header-->
+    <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_profile_details" aria-expanded="true" aria-controls="kt_account_profile_details">
+        <!--begin::Card title-->
+        <div class="card-title m-0">
+            <h3 class="fw-bolder m-0">Agregar Producto</h3>
+        </div>
+        <!--end::Card title-->
+    </div>
+    <!--begin::Card header-->
+    <!--begin::Content-->
+    <div id="kt_account_settings_profile_details" class="collapse show">
+        <!--begin::Form-->
+        <form id="kt_account_profile_details_form" class="form" [formGroup]="newProductoForm" ngNativeValidate  (ngSubmit)="addProducto()" >
+            <!--begin::Card body-->
+            <div class="card-body border-top p-9">
+                <!--begin::Input group-->
+                <div class="row mb-4">
+                    <!--begin::Label-->
+                    <label class="col-lg-2 col-form-label required fw-bold fs-6">Nombre</label>
+                    <!--end::Label-->
+                    <!--begin::Col-->
+                    <div class="col-lg-4">
+                        <div class="fv-row">
+                            <input type="text" name="nombre" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Nombre" formControlName="name" required />
+                        </div>
+                    </div>
+
+                    <label class="col-lg-2 col-form-label  fw-bold fs-6">Codigo</label>
+                    <!--end::Label-->
+                    <!--begin::Col-->
+                    <div class="col-lg-4">
+                        <div class="fv-row">
+                            <input type="text" name="code" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Codigo" formControlName="code" />
+                        </div>
+                    </div>
+                    <!--end::Col-->
+                </div>
+                <!--end::Input group-->
+
+                 <!--begin::Input group-->
+                 <div class="row mb-4">
+                    <!--begin::Label-->
+                    <label class="col-lg-2 col-form-label  fw-bold fs-6">Clasificacion</label>
+                    <!--end::Label-->
+                    <!--begin::Col-->
+                    <div class="col-lg-4">
+                        <div class="fv-row">
+                            <input type="text" name="clasificacion" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="clasificacion" formControlName="clasificacion" />
+                        </div>
+                    </div>
+
+                    <label class="col-lg-2 col-form-label  fw-bold fs-6">Tipo</label>
+                    <!--end::Label-->
+                    <!--begin::Col-->
+                   <div class="col-lg-4 fv-row">
+                        <select name="type"  data-placeholder="Seleccionar..." class="form-select form-select-solid form-select-lg fw-bold" formControlName="type" required>
+                            <option value="" disabled>Seleccionar...</option>
+                            <option value="Tipo 1">Tipo 1</option>
+                            <option value="Tipo 2">Tipo 2</option>
+                            <option value="Tipo 3">Tipo 3</option>
+                        </select>
+                    </div>
+
+                    <!--end::Col-->
+                </div>
+                <!--end::Input group-->
+
+
+
+                      <!--begin::Input group-->
+                      <div class="row mb-4">
+                        <!--begin::Label-->
+
+                        <label class="col-lg-2 col-form-label  fw-bold fs-6">Descripcion</label>
+                        <!--end::Label-->
+                        <!--begin::Col-->
+                        <div class="col-lg-4">
+                            <div class="fv-row">
+                                <textarea name="description" rows="4" cols="50" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" formControlName="description">
+
+                                </textarea>
+                            </div>
+                        </div>
+                        <!--end::Col-->
+
+                     <!--begin::Label-->
+
+                    </div>
+                    <!--end::Input group-->
+
+            </div>
+            <!--end::Card body-->
+            <!--begin::Actions-->
+            <div class="card-footer d-flex justify-content-end py-6 px-9">
+                <button type="reset" class="btn btn-light btn-active-light-primary me-2">Cancelar</button>
+                <button type="submit" class="btn btn-primary" id="kt_account_profile_details_submit">Guardar</button>
+            </div>
+            <!--end::Actions-->
+        </form>
+        <!--end::Form-->
+    </div>
+
+
+
+
+
+
+    <!--end::Content-->
+</div>
+<!--end::Basic info-->
+
+
+
+  <!--begin::Tables Widget 11-->
+    <div class="card mb-5 mb-xl-8 mt-4">
+        <!--begin::Header-->
+        <div class="card-header border-0 pt-5">
+            <h3 class="card-title align-items-start flex-column">
+                <span class="card-label fw-bolder fs-3 mb-1">Lista de Productos</span>
+                <!-- <span class="text-muted mt-1 fw-bold fs-7">Over 500 new products</span> -->
+            </h3>
+
+        </div>
+        <!--end::Header-->
+        <!--begin::Body-->
+        <div class="card-body py-3">
+            <!--begin::Table container-->
+            <div class="table-responsive">
+                <!--begin::Table-->
+                <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-responsive-md table-hover align-middle gs-0 gy-4 text-center">
+                    <!--begin::Table head-->
+                    <thead>
+                        <tr class=" fw-bolder text-muted bg-dark">
+                            <th class="text-center min-w-80px">Nombre</th>
+                            <!-- <th class="text-center min-w-80px">Clase</th> -->
+                            <th class="text-center min-w-80px">Tipo</th>
+                            <!-- <th class="min-w-150px">telefono</th> -->
+                            <th class="min-w-80px text-center">Estado</th>
+                            <th class="min-w-80px text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <!--end::Table head-->
+                    <!--begin::Table body-->
+                    <tbody>
+                        <tr *ngFor="let item of productos">
+                            <td>
+                                <div class="text-center">
+                                    <!-- <div class="symbol symbol-50px me-5">
+                                        <img src="{{url}}{{item.imagePath}}" class="" alt="" />
+                                    </div> -->
+                                    <div class="d-flex text-center flex-column">
+                                        <a class="text-dark fw-bolder text-hover-primary mb-1 fs-6">{{item.name}}</a>
+                                        <span class="text-muted fw-bold text-muted d-block fs-7">{{item.code}}</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <!-- <td>
+                                <a class="text-center text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{item.clasificacion}}</a>
+                                <span class="text-muted fw-bold text-muted d-block fs-7">{{item.type}}</span>
+                            </td> -->
+                            <td>
+                                <a class="text-center text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{item.type}}</a>
+                                <!-- <span class="text-muted fw-bold text-muted d-block fs-7">Rejected</span> -->
+                            </td>
+                            <!-- <td>
+                                <a   class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{item.telefono}}</a>
+                                <span class="text-muted fw-bold text-muted d-block fs-7">{{item.direccion}}</span>
+                            </td> -->
+                            <td>
+                                <span [ngClass]="item.status === 'Entregado' ? 'badge badge-secondary' : 'Activo'? 'badge badge-success': 'badge badge-warning' "class="text-center fs-7 fw-bold">{{item.status}}</span>
+                            </td>
+                            <td class="text-center">
+                                <a routerLink="/productos/edit/{{item._id}}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                    <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
+                                    <span class="svg-icon svg-icon-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path opacity="0.3" d="M21.4 8.35303L19.241 10.511L13.485 4.755L15.643 2.59595C16.0248 2.21423 16.5426 1.99988 17.0825 1.99988C17.6224 1.99988 18.1402 2.21423 18.522 2.59595L21.4 5.474C21.7817 5.85581 21.9962 6.37355 21.9962 6.91345C21.9962 7.45335 21.7817 7.97122 21.4 8.35303ZM3.68699 21.932L9.88699 19.865L4.13099 14.109L2.06399 20.309C1.98815 20.5354 1.97703 20.7787 2.03189 21.0111C2.08674 21.2436 2.2054 21.4561 2.37449 21.6248C2.54359 21.7934 2.75641 21.9115 2.989 21.9658C3.22158 22.0201 3.4647 22.0084 3.69099 21.932H3.68699Z" fill="currentColor" />
+                                            <path d="M5.574 21.3L3.692 21.928C3.46591 22.0032 3.22334 22.0141 2.99144 21.9594C2.75954 21.9046 2.54744 21.7864 2.3789 21.6179C2.21036 21.4495 2.09202 21.2375 2.03711 21.0056C1.9822 20.7737 1.99289 20.5312 2.06799 20.3051L2.696 18.422L5.574 21.3ZM4.13499 14.105L9.891 19.861L19.245 10.507L13.489 4.75098L4.13499 14.105Z" fill="currentColor" />
+                                        </svg>
+                                    </span>
+                                    <!--end::Svg Icon-->
+                                </a>
+
+                                <a (click)="entregar(item)" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                  <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
+                                  <span class="svg-icon svg-icon-3">
+                                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path opacity="0.3" d="M19.5997 3.52344H2.39639C2.09618 3.53047 1.8003 3.59658 1.52565 3.718C1.25101 3.83941 1.00298 4.01375 0.79573 4.23106C0.588484 4.44837 0.426087 4.70438 0.317815 4.98447C0.209544 5.26456 0.157521 5.56324 0.164719 5.86344C0.157521 6.16364 0.209544 6.46232 0.317815 6.74241C0.426087 7.0225 0.588484 7.27851 0.79573 7.49581C1.00298 7.71312 1.25101 7.88746 1.52565 8.00888C1.8003 8.1303 2.09618 8.19641 2.39639 8.20344H19.5997C19.8999 8.19641 20.1958 8.1303 20.4704 8.00888C20.7451 7.88746 20.9931 7.71312 21.2004 7.49581C21.4076 7.27851 21.57 7.0225 21.6783 6.74241C21.7866 6.46232 21.8386 6.16364 21.8314 5.86344C21.8386 5.56324 21.7866 5.26456 21.6783 4.98447C21.57 4.70438 21.4076 4.44837 21.2004 4.23106C20.9931 4.01375 20.7451 3.83941 20.4704 3.718C20.1958 3.59658 19.8999 3.53047 19.5997 3.52344Z" fill="currentColor" fill-opacity="0.8"/>
+                                      <path d="M2.39453 8.20361L4.01953 18.3111C4.15644 19.145 4.58173 19.9043 5.22121 20.4567C5.8607 21.009 6.6738 21.3194 7.5187 21.3336H14.5712C15.4215 21.3202 16.2395 21.006 16.8801 20.4468C17.5207 19.8875 17.9424 19.1193 18.0704 18.2786L19.5979 8.20361H2.39453ZM9.28453 16.3178C9.28453 16.5333 9.19893 16.7399 9.04656 16.8923C8.89418 17.0447 8.68752 17.1303 8.47203 17.1303C8.25654 17.1303 8.04988 17.0447 7.89751 16.8923C7.74513 16.7399 7.65953 16.5333 7.65953 16.3178V12.4069C7.65953 12.1915 7.74513 11.9848 7.89751 11.8324C8.04988 11.68 8.25654 11.5944 8.47203 11.5944C8.68752 11.5944 8.89418 11.68 9.04656 11.8324C9.19893 11.9848 9.28453 12.1915 9.28453 12.4069V16.3178ZM14.322 16.3178C14.322 16.5333 14.2364 16.7399 14.0841 16.8923C13.9317 17.0447 13.725 17.1303 13.5095 17.1303C13.294 17.1303 13.0874 17.0447 12.935 16.8923C12.7826 16.7399 12.697 16.5333 12.697 16.3178V12.4069C12.697 12.1915 12.7826 11.9848 12.935 11.8324C13.0874 11.68 13.294 11.5944 13.5095 11.5944C13.725 11.5944 13.9317 11.68 14.0841 11.8324C14.2364 11.9848 14.322 12.1915 14.322 12.4069V16.3178Z" fill="currentColor" fill-opacity="0.8"/>
+                                      <path d="M17.3895 4.87755C17.2529 4.87776 17.1185 4.84303 16.999 4.77667C16.8796 4.71031 16.7791 4.61452 16.707 4.49839L14.5945 1.24839C14.488 1.07063 14.4544 0.858502 14.5009 0.656521C14.5473 0.45454 14.6702 0.2784 14.8437 0.165055C15.0215 0.0626479 15.2311 0.0303209 15.4315 0.0744071C15.6319 0.118493 15.8086 0.235816 15.927 0.403388L18.0395 3.70755C18.1434 3.88599 18.1755 4.09728 18.1292 4.2985C18.0829 4.49972 17.9618 4.67577 17.7904 4.79089C17.6659 4.85225 17.5282 4.88202 17.3895 4.87755Z" fill="currentColor" fill-opacity="0.8"/>
+                                      <path d="M4.49988 4.8885C4.34679 4.8928 4.19591 4.85131 4.06655 4.76933C3.89514 4.65422 3.77399 4.47817 3.72771 4.27694C3.68143 4.07572 3.71349 3.86443 3.81738 3.686L5.98405 0.435999C6.09739 0.262485 6.27353 0.13961 6.47551 0.0931545C6.6775 0.0466989 6.88962 0.0802727 7.06738 0.186832C7.23676 0.303623 7.35627 0.479597 7.40239 0.680101C7.4485 0.880606 7.41788 1.09111 7.31655 1.27017L5.20405 4.52017C5.12881 4.63747 5.0243 4.73313 4.90082 4.79773C4.77733 4.86232 4.63914 4.8936 4.49988 4.8885Z" fill="currentColor" fill-opacity="0.8"/>
+                                      </svg>
+
+                                  </span>
+                                  <!--end::Svg Icon-->
+                              </a>
+
+
+                                <a (click)="delete(item)" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                    <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
+                                    <span class="svg-icon svg-icon-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path d="M5 9C5 8.44772 5.44772 8 6 8H18C18.5523 8 19 8.44772 19 9V18C19 19.6569 17.6569 21 16 21H8C6.34315 21 5 19.6569 5 18V9Z" fill="currentColor" />
+                                            <path opacity="0.5" d="M5 5C5 4.44772 5.44772 4 6 4H18C18.5523 4 19 4.44772 19 5V5C19 5.55228 18.5523 6 18 6H6C5.44772 6 5 5.55228 5 5V5Z" fill="currentColor" />
+                                            <path opacity="0.5" d="M9 4C9 3.44772 9.44772 3 10 3H14C14.5523 3 15 3.44772 15 4V4H9V4Z" fill="currentColor" />
+                                        </svg>
+                                    </span>
+                                    <!--end::Svg Icon-->
+                                </a>
+
+
+
+
+
+                            </td>
+                        </tr>
+                    </tbody>
+                    <!--end::Table body-->
+                </table>
+                <!--end::Table-->
+            </div>
+            <!--end::Table container-->
+        </div>
+        <!--begin::Body-->
+    </div>
+    <!--end::Tables Widget 11-->

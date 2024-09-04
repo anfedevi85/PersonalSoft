@@ -1,0 +1,100 @@
+<div class="row">
+  <div class="col-11">
+
+     <!--begin::Tables Widget 11-->
+ <div *ngIf="companies" class="card mb-5 mb-xl-8 mt-4">
+  <!--begin::Header-->
+  <div class="card-header border-0 pt-5">
+      <h3 class="card-title align-items-start flex-column">
+          <span class="card-label fw-bolder fs-3 mb-1">Companies List</span>
+          <!-- <span class="text-muted mt-1 fw-bold fs-7">Over 500 new products</span> -->
+      </h3>
+
+      <div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Click for New Company">
+        <a (click)="addCompany()" (keyup)="addCompany()" tabindex="" class="btn btn-sm btn-light btn-active-primary" >
+        <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
+        <span class="svg-icon svg-icon-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="currentColor" />
+                <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="currentColor" />
+            </svg>
+        </span>
+        <!--end::Svg Icon-->New Company</a>
+    </div>
+  </div>
+
+
+  <!--end::Header-->
+  <!--begin::Body-->
+  <div class="card-body py-3">
+      <!--begin::Table container-->
+      <div class="table-responsive">
+          <!--begin::Table-->
+          <table datatable class="table table-responsive-md table-bordered table-hover table-rounded align-middle gs-0 gy-4 text-center"  [dtOptions]="dtOptions" id="companysTable">
+              <!--begin::Table head-->
+              <thead>
+                  <tr class="fw-bolder text-muted bg-dark">
+                    <th class="min-w-25px"></th>
+                      <th class="min-w-100px text-center">Name</th>
+                      <th class="min-w-50px  text-center">Address</th>
+                      <th class="min-w-50px  text-center">Office Email</th>
+                      <th class="min-w-50px text-center">Status</th>
+                  </tr>
+              </thead>
+              <!--end::Table head-->
+              <!--begin::Table body-->
+              <tbody>
+                  <tr *ngFor="let item of companies">
+                    <td>
+                      <div class="form-check form-check-sm form-check-solid">
+                          <input class="form-check-input widget-9-check" type="checkbox" [value]="item._id" [checked]="false"  (change)="selected($event)"/>
+                      </div>
+                  </td>
+                      <td class=" text-center">
+                                <a  class="text-dark text-center fw-bolder text-hover-primary mb-1 fs-6">{{item.name}}</a>
+                                <span class="text-muted fw-bold text-muted d-block fs-7">{{item.legalName}}</span>
+                    </td>
+
+                      <td class="text-center">
+                          <a  class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{item.address}}</a>
+                      </td>
+
+                      <td class="text-center">
+                        <a  class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{item.officeEmail}}</a>
+                    </td>
+                      <!-- <td>
+                          <a   class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{item.direccion}}</a>
+                          <span class="text-muted fw-bold text-muted d-block fs-7">Insurance</span>
+                      </td> -->
+                      <td><span  [ngClass]="item.status === 'Active' ? 'badge badge-success' :  'badge badge-warning' " >{{item.status}} </span></td>
+                  </tr>
+              </tbody>
+              <!--end::Table body-->
+
+          </table>
+          <!--end::Table-->
+      </div>
+      <!--end::Table container-->
+  </div>
+  <!--begin::Body-->
+</div>
+<!--end::Tables Widget 11-->
+
+  </div>
+  <div class="col-1">
+
+    <aside class="align-items-center">
+
+      <!-- <a (click)="edit()" (keyup)="edit()" tabindex="0" class="btn btn-icon btn-secondary my-4" title="View Company">
+        <i class="ki-duotone ki-eye fs-1"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
+        </a> -->
+          <a (click)="edit()" (keyup)="edit()" tabindex="2" class="btn btn-icon btn-secondary my-4" title="Edit Company">
+            <i class="ki-duotone ki-pencil fs-1"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
+            </a>
+            <a (click)="delete()" (keyup)="delete()" tabindex="3" class="btn btn-icon btn-secondary my-4" title="Delete Company">
+              <i class="ki-duotone ki-trash fs-1"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
+              </a>
+
+    </aside>
+  </div>
+</div>

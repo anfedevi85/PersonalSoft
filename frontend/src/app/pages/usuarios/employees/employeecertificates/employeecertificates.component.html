@@ -1,0 +1,105 @@
+<!--begin::Tables Widget 11-->
+<div class="row">
+  <div class="col-11">
+    <div  class="card mb-5  mt-4 mx-0">
+      <!--begin::Header-->
+      <div class="card-header border-0 pt-5">
+          <h3 class="card-title align-items-start flex-column">
+              <span class="card-label fw-bolder fs-3 mb-1">EMPLOYEE CERTIFICATES/ LICENSES</span>
+              <!-- <span class="text-muted mt-1 fw-bold fs-7">Over 500 new products</span> -->
+          </h3>
+    <!-- <div class="col-2">
+      <select (change)="filter($event)" name="filter" aria-label="Filter" data-control="filter" data-placeholder="Filter" class="form-select form-select-solid form-select-lg fw-bold" id="filter">
+        <option value="Active" selected>Active</option>
+        <option value="Inactive">Inactive</option>
+        <option value="" >All</option>
+    </select>
+
+    </div> -->
+
+          <div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Click for New Job File">
+            <a (click)="addCertificate()" (keyup)="addCertificate()" tabindex="" class="btn btn-sm btn-light btn-active-primary" >
+            <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
+            <span class="svg-icon svg-icon-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="currentColor" />
+                    <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="currentColor" />
+                </svg>
+            </span>
+            <!--end::Svg Icon-->Add File</a>
+        </div>
+      </div>
+      <!--end::Header-->
+      <!--begin::Body-->
+      <div *ngIf="certificates" class="card-body">
+          <!--begin::Table container-->
+          <div class="table-responsive">
+              <!--begin::Table-->
+              <table  #table datatable class="table table-responsive-md table-bordered table-hover table-rounded align-middle gs-0 gy-4 text-center"  [dtOptions]="dtOptions" id="jobFileTable">
+                  <!--begin::Table head-->
+                  <thead>
+                      <tr class="fw-bolder text-muted bg-dark">
+                        <th class="min-w-20px text-center"></th>
+                        <!-- <th class="min-w-25px text-center"><i class="fs-2 ki-duotone ki-mouse-square"><i class="path1"></i><i class="path2"></i></i></th> -->
+                        <th class="min-w-80px text-center">Name</th>
+                        <th class="min-w-100px text-center">Code</th>
+                        <th class="min-w-100px text-center">Data Expiry</th>
+                        <th class="min-w-100px text-center">Status</th>
+                      </tr>
+                  </thead>
+                  <!--end::Table head-->
+                  <!--begin::Table body-->
+                  <tbody>
+                      <tr *ngFor="let item of certificates">
+                        <td class="align-middle">
+                          <div class="form-check form-check-sm form-check-solid text-center">
+                              <input class="form-check-input widget-9-check" type="checkbox" [value]="item._id" [checked]="false"  (change)="selected($event)"/>
+                          </div>
+                      </td>
+                          <td>
+                                  <a class="text-dark fw-bolder text-hover-primary mb-1 fs-6">{{item.name}}</a>
+                                  <!-- <span class="text-muted fw-bold text-muted d-block fs-7">{{item.cargo}}</span> -->
+                          </td>
+                          <td>
+                              <a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{item.code}}</a>
+                              <!-- <span class="text-muted fw-bold text-muted d-block fs-7">{{item.ownerAddress}}</span> -->
+                          </td>
+                          <td>
+                              <a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{item.expiryDate}}</a>
+                              <!-- <span class="text-muted fw-bold text-muted d-block fs-7">{{item.claimNumber}}</span> -->
+                          </td>
+
+                          <td>
+                              <span [ngClass]="item.status === 'Active'? 'badge badge-success' : item.status === 'Inactive'? 'badge badge-warning':'badge badge-danger'">{{item.status}}</span>
+                          </td>
+                      </tr>
+                  </tbody>
+                  <!--end::Table body-->
+              </table>
+              <!--end::Table-->
+          </div>
+          <!--end::Table container-->
+      </div>
+      <!--begin::Body-->
+    </div>
+    <!--end::Tables Widget 11-->
+
+  </div>
+  <div class="col-1">
+    <aside class="align-items-center">
+
+
+          <a (click)="edit()" (keyup)="edit()" tabindex="2" class="btn btn-icon btn-secondary my-4">
+            <i class="ki-duotone ki-pencil fs-1"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
+            </a>
+
+            <a (click)="view()" (keyup)="view()" tabindex="2" class="btn btn-icon btn-secondary my-4">
+              <i class="ki-duotone ki-eye fs-1"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
+              </a>
+     <a (click)="delete()" (keyup)="delete()" tabindex="3" class="btn btn-icon btn-secondary my-4">
+              <i class="ki-duotone ki-trash fs-1"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
+              </a>
+
+              </aside>
+  </div>
+</div>

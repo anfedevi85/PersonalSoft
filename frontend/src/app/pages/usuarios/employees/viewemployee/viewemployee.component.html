@@ -1,0 +1,276 @@
+
+
+<!--begin::Tables Widget 11-->
+<div  class="card">
+
+   <!--begin::Toolbar-->
+   <div class="toolbar" id="kt_toolbar">
+    <!--begin::Container-->
+    <div id="kt_toolbar_container" class="container-fluid d-flex flex-stack">
+      <!--begin::Page title-->
+      <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center me-3 flex-wrap lh-1">
+        <!--begin::Title-->
+          <h1 class="d-flex align-items-center text-dark my-1 nunito-bold font-px14 ">ADMINISTRACION DE USUARIOS</h1>
+
+        </div>
+
+          <!-- <select (change)="filter($event)" name="filter" aria-label="Filter" data-control="filter" data-placeholder="Filter" class="form-select form-select-solid form-select-lg fw-bold" id="filter">
+            <option value="Active" selected >Active</option>
+            <option value="Inactive">Inactive</option>
+            <option value="" >All</option>
+        </select> -->
+
+
+          <div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Click for New Employee">
+            <a (click)="addEmployee()" (keyup)="addEmployee()" tabindex="" class="btn btn-sm btn-light btn-active-primary" >
+            <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
+            <span class="svg-icon svg-icon-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="currentColor" />
+                    <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="currentColor" />
+                </svg>
+            </span>
+            <!--end::Svg Icon-->AGREGAR USUARIO</a>
+      </div>
+
+        <!--end::Title-->
+
+
+      <!--end::Page title-->
+
+    </div>
+    <!--end::Container-->
+  </div>
+
+
+
+  <!--end::Toolbar-->
+      <!--begin::Header-->
+      <!--end::Header-->
+      <!--begin::Body-->
+      <div *ngIf="users"  class="card-body">
+          <!--begin::Table container-->
+          <div class="table-responsive tabla-container700 ">
+              <!--begin::Table-->
+              <table datatable class="table table-hoverTablerow text-center" [dtOptions]="dtOptions"  >
+                  <!--begin::Table head-->
+                  <thead >
+                      <tr class="nunito-bold font-px12 text-white bg-dark">
+                        <th hidden class="min-w-25px text-center"></th>
+
+                        <th class="text-center min-w-100px">NOMBRE </th>
+                        <!-- <th class="text-center min-w-100px">Last</th> -->
+                        <th class="text-center min-w-100px">EMAIL</th>
+                        <th class="text-center min-w-70px">TELEFONO</th>
+                        <th class="text-center min-w-80px">CARGO</th>
+                        <th class="text-center min-w-80px">PERMISOS</th>
+                        <!-- <th class="text-center min-w-50px">DATE HIRED</th> -->
+                        <th class="text-center min-w-50px">STATUS</th>
+                        <!-- <th class="min-w-100px text-center ">Acciones</th> -->
+                      </tr>
+                  </thead>
+                  <!--end::Table head-->
+                  <!--begin::Table body-->
+                  <tbody  >
+                      <tr [routerLink]="item.isSelected ? ['/admin', 'employees','edit', item._id] : null"  *ngFor="let item of users " (click)="onRowClick($event, item)" [ngClass]="{'selected-Table_row': item.isSelected}" >
+                        <td hidden>
+                          <div class="form-check form-check-sm form-check-solid">
+                              <input class="form-check-input" type="checkbox" [id]="item._id" [value]="item._id"  />
+                          </div>
+                      </td>
+                          <td>
+                                  <a class="nunito-bold font-px12 mb-1 text-dark">{{item.name}}</a>
+
+                                  <!-- <span class="text-muted fw-bold text-muted d-block fs-7">{{item.cargo}}</span> -->
+                          </td>
+                          <!-- <td>
+                              <a class="text-dark fw-bolder  d-block mb-1 fs-6">{{item.lastname}}</a>
+                              <span class="text-muted fw-bold text-muted d-block fs-7">{{item.ownerAddress}}</span>
+                          </td> -->
+                          <td>
+                              <a class="nunito-bold font-px12 mb-1 text-dark">{{item.email}}</a>
+                              <!-- <span class="text-muted fw-bold text-muted d-block fs-7">{{item.claimNumber}}</span> -->
+                          </td>
+                          <td>
+                              <a class="nunito-bold font-px12 mb-1 text-dark">{{item.phone}}</a>
+                              <!-- <span class="text-muted fw-bold text-muted d-block fs-7">{{item.dateLoss  }}</span> -->
+                          </td>
+                          <td>
+                            <a class="nunito-bold font-px12 mb-1 text-dark">{{item.position}}</a>
+                            <!-- <span class="text-muted fw-bold text-muted d-block fs-7">{{item.dateLoss | date: 'longDate'  }}</span> -->
+                        </td>
+                        <td>
+                          <a class="nunito-bold font-px12 mb-1 text-dark">{{item.rol}}</a>
+                          <!-- <span class="text-muted fw-bold text-muted d-block fs-7">{{item.dateLoss | date: 'longDate'  }}</span> -->
+                      </td>
+                        <!-- <span class="text-muted fw-bold text-muted d-block fs-7">{{item.dateLoss | date: 'longDate'  }}</span> -->
+                          <td >
+
+                            <div (click)="stopClick($event)" class="btn-group" dropdown>
+                              <button id="button-basic" dropdownToggle type="button" class="btn btn-sm dropdown-toggle" [ngClass]="item.status === 'Active'? 'btn-success' : item.status === 'Inactive'? 'btn-warning':'btn-danger'"
+                                      aria-controls="dropdown-basic">
+                                {{item.status}} <span class="caret"></span>
+                              </button>
+                              <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+                                  role="menu" aria-labelledby="button-basic">
+                                <li [hidden]="item.status === 'Active'" role="menuitem"><a class="dropdown-item" (click)="activeUser(item)" data-bs-toggle="modal" data-bs-target="#editUser">Active</a></li>
+                                <li [hidden]="item.status === 'Inactive'" role="menuitem"><a class="dropdown-item" (click)="inactive(item._id)">Inactive</a></li>
+                                <li role="menuitem"><a class="dropdown-item" (click)="delete(item._id)">Delete</a></li>
+
+                              </ul>
+                            </div>
+
+        <!-- Example single danger button -->
+<!-- <div class="btn-group">
+  <button type="button"   [ngClass]="item.status === 'Active'? 'btn btn-success btn-sm dropdown-toggle' : item.status === 'Inactive'? 'btn btn-warning btn-sm dropdown-toggle':'btn btn-danger btn-sm dropdown-toggle'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {{item.status}}
+  </button>
+  <div class="dropdown-menu">
+    <a [hidden]="item.status === 'Active'" class="dropdown-item" (click)="active(item._id)">Active</a>
+    <a [hidden]="item.status === 'Inactive'" class="dropdown-item" (click)="active(item._id)">Inactive</a>
+    <a class="dropdown-item" (click)="delete(item._id)">Delete</a>
+  </div>
+</div> -->
+
+
+
+
+
+
+                            <!-- <select name="status" (change)="active()" aria-label="status" data-control="status" data-placeholder="status" [value]="item.status"  id="status"
+                            class=""
+                            [ngClass]="item.status === 'Active'? 'btn btn-success btn-sm dropdown-toggle' : item.status === 'Inactive'? 'btn btn-warning btn-sm dropdown-toggle':'btn btn-danger btn-sm dropdown-toggle'"
+                            >
+                              <option value="Active">Active</option>
+                          <option value="Inactive">Inactive</option>
+                          <option value="Delete">Delete </option>
+                          </select> -->
+
+                            <!-- <div class="dropdown">
+                              <button class="btn btn-secondary dropdown-toggle"
+                              [ngClass]="item.status === 'Active'? 'btn btn-success btn-sm dropdown-toggle' : item.status === 'Inactive'? 'btn btn-warning btn-sm dropdown-toggle':'btn btn-danger btn-sm dropdown-toggle'"
+                              type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{item.status}}
+                              </button>
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                <button class="dropdown-item" type="button">Active</button>
+                                <button class="dropdown-item" type="button">Inactive</button>
+                                <button class="dropdown-item" type="button">Delete</button>
+                              </div>
+                            </div> -->
+
+                              <!-- <span [ngClass]="item.status === 'Active'? 'badge badge-success' : item.status === 'Inactive'? 'badge badge-warning':'badge badge-danger'">{{item.status}}</span> -->
+                          </td>
+                      </tr>
+                  </tbody>
+                  <!--end::Table body-->
+              </table>
+              <!--end::Table-->
+
+          </div>
+          <!--end::Table container-->
+      </div>
+      <!--begin::Body-->
+
+
+
+      <!-- <div id="menuRight" [hidden]="!isMenuOpen" class="text-center">
+
+        <br><br>
+                        <a (click)="edit()" class="row p-1 mb-1" data-bs-toggle="tooltip" data-bs-custom-class="tooltip-inverse" data-bs-placement="left" title="Preview">
+                          <i class="fa-solid fa-eye icon-hover-dark fs-2 text-white"></i>
+                        </a>
+
+                      <a (click)="active()" (keyup)="active()" tabindex="3" class="row p-1 mb-1" data-bs-toggle="tooltip" data-bs-custom-class="tooltip-inverse" data-bs-placement="left" title="Status">
+                        <i class="fa-solid fa-lock icon-hover-dark fs-2 text-white mt-4"></i>
+                      </a>
+
+                        <a (click)="delete()" (keyup)="delete()" tabindex="4" class="row p-1 mb-1"data-bs-toggle="tooltip" data-bs-custom-class="tooltip-inverse" data-bs-placement="left" title="Delete">
+                          <i class="fa-solid fa-trash icon-hover-dark fs-2 text-white mt-4"></i>
+                          </a>
+
+            </div>
+
+          <div id="menuRightClose" [hidden]="isMenuOpen"></div>
+ -->
+
+</div>
+    <!--end::Tables Widget 11-->
+
+
+
+<!--------------------------------------------------------------------->
+<!--Modal primary customer-->
+<!--------------------------------------------------------------------->
+<div   class="modal fade" tabindex="-1" id="editUser">
+  <div class="modal-dialog modal-dialog-centered">
+      <div *ngIf="editUser" class="modal-content">
+          <div class="modal-header">
+              <h3 class="modal-title titulos"> ACTIVE EMPLOYEE ?</h3>
+
+              <!--begin::Close-->
+              <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+                  <i class="ki-duotone ki-cross fs-1"><span class="path1"></span><span class="path2"></span></i>
+              </div>
+              <!--end::Close-->
+          </div>
+
+          <div class="modal-body">
+
+              <form id="newCustomer" class="form" [formGroup]="activeUserForm" ngNativeValidate  (ngSubmit)="active()">
+
+
+                <div class="form-floating mt-2">
+                  <input type="text" name="name" class="form-control" formControlName="name"  readonly />
+                  <label for="name" class="nunito font-px12">Name</label>
+              </div>
+
+
+
+              <!-- <div class="form-floating mt-2">
+                <input type="text" name="street" class="form-control" id="street" formControlName="street"  />
+                <label for="street" class="nunito font-px12 ">Street</label>
+            </div> -->
+
+                <!-- <div class="p-1 row g-0">
+
+
+                <div class="col-2 form-floating mt-2">
+                  <input type="text" name="unit" class="form-control" id="unit" formControlName="unit"  />
+                  <label for="unit" class="nunito font-px12 ">Unit</label>
+              </div>
+              <div class="col-1"></div>
+
+              <div class="col-9 form-floating mt-2">
+                <input type="text" name="street" class="form-control" id="street" formControlName="street"  />
+                <label for="street" class="nunito font-px12 ">Street</label>
+            </div>
+
+
+                </div> -->
+
+
+
+
+
+              <div class=" form-floating mt-2">
+                <input type="email" name="email" class="form-control" formControlName="email"  readonly />
+                <label for="email" class="nunito font-px12 required">Email</label>
+            </div>
+
+            <div class=" form-floating mt-2">
+              <input type="text" appPhoneformat name="phone" class="form-control" id="phone" formControlName="phone" required  />
+              <label for="phone" class="nunito font-px12 required ">PHONE <span class="text-danger">*</span></label>
+          </div>
+
+                <div class="text-end my-4">
+
+                  <button type="button" class="btn btn-light"  data-bs-dismiss="modal" aria-label="Close" #closeEditUser>CANCEL</button>
+                  <button type="submit" class="btn btn-primary">SAVE</button>
+                </div>
+              </form>
+
+          </div>
+      </div>
+  </div>
+</div>

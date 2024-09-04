@@ -1,0 +1,213 @@
+/* style personal Anfedevi */
+
+
+.selected-Table_row {
+  background-color: #e6f4f8; /* Cambia este valor al color deseado para la fila seleccionada */
+}
+.table-hoverTablerow tr:not(.selected-Table_row):hover {
+  background-color: #eeeff1; /* Cambia a tu color oscuro deseado */
+
+}
+
+.fullHeight {
+  height: 100vh;
+
+}
+
+
+.titulos{
+  color: #558da3;
+}
+
+.colorfont{
+  color: #04748d;
+}
+.fixed-bottom-right {
+  position: fixed;
+  bottom: 70px;
+  right: 40px;
+}
+#menuRight {
+  background-color: #069abc;
+  width: 2%;
+  float: right;
+  position: fixed;
+  top: 100px;
+  right: 0;
+  height: 100vh;
+  z-index: 2;
+}
+
+.rotate-btn {
+  transform: rotate(270deg);
+  position: fixed;
+  top: 168px; /* Posición vertical */
+  left: 25px; /* Posición horizontal */
+}
+
+.rotate-btn2 {
+  transform: rotate(270deg);
+  position: fixed;
+  top: 309px; /* Posición vertical */
+  left: 25px; /* Posición horizontal */
+}
+
+.rotate-btn3 {
+  transform: rotate(270deg);
+  position: fixed;
+  top: 450px; /* Posición vertical */
+  left: 25px; /* Posición horizontal */
+}
+
+.rotate-btn4 {
+  transform: rotate(270deg);
+  position: fixed;
+  top: 590px; /* Posición vertical */
+  left: 25px; /* Posición horizontal */
+}
+#menuLeft {
+  width: 15%;
+  float: right;
+  position: fixed;
+  top: 20px;
+  left: 5%;
+  height: 100vh;
+  z-index: 2;
+}
+
+#menuRightClose {
+  background-color: #069abc;
+  width: 5px;
+  float: right;
+  position: fixed;
+  top: 113px;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  z-index: 999;
+}
+
+
+
+.tabla-container700 {
+  /* width: 800px;  Ancho fijo */
+   height: 700px; /* Alto fijo */
+   overflow: auto; /* Agrega una barra de desplazamiento si es necesario */
+ }
+ .icon-hover-dark:hover {
+  filter: brightness(60%); /* Cambia el valor para ajustar la intensidad del oscurecimiento */
+}
+.manita {
+  cursor: pointer;
+}
+
+
+.font-px24 {
+  font-size: 24px;
+}
+
+.font-px18 {
+  font-size: 18px;
+}
+
+.font-px16 {
+  font-size: 16px;
+}
+
+.font-px14 {
+  font-size: 14px;
+}
+
+.font-px12{
+  font-size: 12px;
+}
+
+.font-px11{
+  font-size: 11px;
+}
+
+.font-px10{
+  font-size: 10px;
+}
+
+.font-px9{
+  font-size: 9px;
+}
+
+
+.font-px8{
+  font-size: 8px;
+}
+
+
+.montserrat-bold{
+  font-family: "Montserrat-Bold", sans-serif;
+  font-style: Bold;
+}
+
+.montserrat{
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+}
+
+.nunito{
+  font-family: "Nunito", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+.nunito-bold{
+  font-family: "Nunito-Bold", sans-serif;
+  font-style: Bold;
+}
+
+.logoimg {
+  max-width: 45%;
+  max-height: 25%;
+  margin-bottom: 80px;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('./assets/fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Montserrat-Bold';
+  src: url('./assets/fonts/Montserrat/Montserrat-Bold.ttf') format('truetype');
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  src: url('./assets/fonts/Nunito_Sans/NunitoSans_7pt-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Nunito-Bold';
+  src: url('./assets/fonts/Nunito_Sans/NunitoSans_7pt-Bold.ttf') format('truetype');
+  font-weight: 800;
+}
+
+/*
+.mainAFDV {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  align-items: end;
+} */
+
+
+.linea-vertical {
+  background-color: white;
+  height: 100%;
+  width: 1px;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+}
+
+.menutitles{
+ position: fixed;
+}

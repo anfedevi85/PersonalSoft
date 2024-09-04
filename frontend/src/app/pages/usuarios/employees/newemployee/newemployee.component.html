@@ -1,0 +1,249 @@
+	<!--begin::Basic info-->
+  <div class="card">
+
+         <!--begin::Toolbar-->
+  <div class="toolbar" id="kt_toolbar">
+    <!--begin::Container-->
+    <div id="kt_toolbar_container" class="container-fluid d-flex flex-stack">
+      <!--begin::Page title-->
+      <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center me-3 flex-wrap lh-1">
+        <!--begin::Title-->
+        <h1 class="d-flex align-items-center text-dark fw-bold my-1 fs-3">AGREGAR USUARIO</h1>
+        <!--end::Title-->
+
+      </div>
+      <!--end::Page title-->
+
+    </div>
+    <!--end::Container-->
+  </div>
+  <!--end::Toolbar-->
+
+    <!--begin::Content-->
+    <div  id="kt_account_settings_profile_details" class="collapse show">
+        <!--begin::Form-->
+        <form  id="newEmployee" class="form" [formGroup]="newEmployeeForm" ngNativeValidate  (ngSubmit)="addUser()">
+            <!--begin::Card body-->
+            <div class="card-body border-top p-9">
+
+              <!--begin::Input group-->
+              <div class="row mb-4">
+                <div class="col-1">
+
+                </div>
+                <div class="col-11">
+                  <h2 class="card-title titulos">INFORMACION</h2>
+                </div>
+                <hr class=" border-primary">
+              </div>
+              <!--end::Input group-->
+              <div class="row">
+                 <!--begin::Col-->
+              <!--end::Col-->
+                  <!--begin::Label-->
+                  <div class="col-1"></div>
+                  <div class="col-5 row">
+                    <div class="col-3 my-3">
+                      <label for="" class="row justify-content-start col-form-label required fw-bold fs-6 mt-2">NOMBRE</label>
+                      <label for="" class="row justify-content-start col-form-label required fw-bold fs-6 mt-2">DIRECCION</label>
+                      <label for="" class="row justify-content-start col-form-label required fw-bold fs-6 mt-4">F. NACIMIENTO</label>
+                      <label for="" class="row justify-content-start col-form-label required fw-bold fs-6 mt-4">DOCUMENTO</label>
+                      <label for="" class="row justify-content-start col-form-label required fw-bold fs-6 mt-4">NIVEL</label>
+                    </div>
+                    <!--end::Label-->
+                    <!--begin::Col-->
+                    <div class="col-lg-9">
+                        <div class="row fv-row my-3">
+                          <div class="col-12">
+                            <input type="text" name="name" appCamelcase class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="-" formControlName="name" required />
+                          </div>
+                          <!-- <div class="col-6">
+                            <input type="text"  name="lastname" appCamelcase class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Last" formControlName="lastname" required />
+                          </div> -->
+                      </div>
+                      <div class="row fv-row my-3 g-1">
+                        <div class="col-2">
+                          <input type="text" name="unit" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="-" formControlName="unit"/>
+                        </div>
+                        <div class="col-10">
+                          <input type="text" name="address" appAutofilladdress class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="-" formControlName="address"  />
+                        </div>
+                    </div>
+                      <div class="row fv-row my-3">
+                        <div class="col-6">
+                          <input type="date" (change)="calcularAge()" name="birthday" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="mm/dd/yyyy" formControlName="birthdate"  required/>
+                        </div>
+                        <div class="col-6">
+                          <input type="string" name="age" [value]="edad" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Age" formControlName="age" readonly  />
+                        </div>
+                    </div>
+                        <div class="fv-row my-3">
+                          <input type="text" appSsnformat name="socialSecurity" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="" formControlName="socialSecurity" required />
+                      </div>
+
+                      <div class="fv-row my-3">
+                        <input type="text" name="education" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="" formControlName="education"  />
+                    </div>
+
+                    </div>
+                    <!--end::Col-->
+
+                  </div>
+
+
+                      <!--begin::Label-->
+                  <div class="col-1"></div>
+                  <div class="col-5 row">
+
+                    <div class="col-4 ">
+                      <!-- <label for="" class="row col-form-label  fw-bold fs-6 my-3">Degree</label> -->
+
+                      <label for="" class="row col-form-label justify-content-start required fw-bold fs-6 mb-4">CONTACTO</label>
+                      <label for="" class="row col-form-label justify-content-start required fw-bold mt-2 fs-6">TELEFONO</label>
+                    </div>
+                    <!--end::Label-->
+                    <!--begin::Col-->
+                    <div class="col-lg-8">
+                    <!-- <div class="fv-row my-3">
+                      <input type="text" name="degree" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="" formControlName="degree"  />
+                  </div> -->
+
+
+                  <div class="row fv-row my-3">
+
+                      <input type="text" name="name" appCamelcase class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="-" formControlName="contactName" required />
+
+                      <input type="text"  name="phone" appPhoneformat class="form-control form-control-lg form-control-solid mt-3" placeholder="-" formControlName="contactPhone" required />
+
+                </div>
+
+
+                    </div>
+                    <!--end::Col-->
+                  </div>
+
+              </div>
+              <!--end::Input group-->
+
+
+
+
+              <!--begin::Input group-->
+              <div class="row mb-4">
+                <div class="col-1">
+
+                </div>
+                <div class="col-11">
+                  <h2 class="card-title titulos mt-5">INFORMACION</h2>
+                </div>
+                <hr class=" border-primary mb-4">
+              </div>
+              <!--end::Input group-->
+               <!--begin::Input group-->
+               <div class="row my-4">
+
+                <!--begin::Col-->
+
+             <!--end::Col-->
+                 <!--begin::Label-->
+                 <div class="col-1"></div>
+                <div class="col-5 row">
+
+                  <div class="col-3 my-3">
+                    <label for="" class="row justify-content-start col-form-label required fw-bold fs-6 mb-3">EMAIL</label>
+                    <label for="" class="row justify-content-start col-form-label required fw-bold fs-6 my-3">TELEFONO</label>
+                  </div>
+                  <!--end::Label-->
+                  <!--begin::Col-->
+                  <div class="col-lg-9">
+                   <div class="fv-row my-3">
+                     <input type="email" name="email" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="-" formControlName="email" required />
+                 </div>
+                 <div class="fv-row my-3">
+                   <input type="text" name="phone" appPhoneformat class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="-" formControlName="phone" required />
+               </div>
+          </div>
+                  <!--end::Col-->
+
+
+                </div>
+
+                     <!--begin::Label-->
+                      <div class="col-1"></div>
+                      <div class="col-5 row">
+                        <div class="col-4">
+                          <label for="" class="row col-form-label required fw-bold fs-6 mt-3">CARGO</label>
+                          <label for="" class="row col-form-label required fw-bold fs-6 mt-3">PERMISOS</label>
+                        </div>
+                        <!--end::Label-->
+                        <!--begin::Col-->
+                        <div class="col-lg-8 ">
+
+                         <div class="fv-row my-3">
+                           <select  name="Position" aria-label="Select..."  data-placeholder="Select..." class="form-select form-select-solid form-select-lg fw-bold" formControlName="position" required>
+                               <option value="" disabled>Select...</option>
+                               <option value="Project Manager">Project Manager</option>
+                               <option value="Manager">Manager</option>
+                               <option value="Estimator">Estimator</option>
+                               <option value="Coordinator">Coordinator</option>
+                               <option value="Technician">Technician</option>
+                               <option value="Lead Technician">Lead Technician</option>
+                               <option value="Manager Assitant">Manager Assitant</option>
+                               <option value="Accountant">Accountant</option>
+                               <option value="Bookkeeper">Bookkeeper</option>
+                               <option value="Supervisor">Supervisor</option>
+                               <option value="Administrator">Administrator</option>
+                           </select>
+                       </div>
+                       <div class="fv-row my-3">
+                         <select  name="rol" aria-label="Select..."  data-placeholder="Select..." class="form-select form-select-solid form-select-lg fw-bold" formControlName="rol" required>
+                           <option value="" disabled>Select...</option>
+                           <option value="Basic">Basic</option>
+                           <option value="Standard">Standard</option>
+                           <option value="Administrator-Level 1">Administrator-Level 1</option>
+                           <option value="Administrator-Level 2">Administrator-Level 2</option>
+                           <option value="Administrator-Level 3">Administrator-Level 3</option>
+                           <option *ngIf="rol === 'SuperAdmin'" value="SuperAdmin">SuperAdmin</option>
+                         </select>
+                     </div>
+                        </div>
+                        <!--end::Col-->
+                      </div>
+
+             </div>
+             <!--end::Input group-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+          </div>
+          <!--end::Card body-->
+          <!--begin::Actions-->
+          <div class="card-footer row">
+
+<!--
+            <div class="col d-flex justify-content-start">
+                <button type="button" (click)="back()" class="btn btn-primary me-2">Back</button>
+            </div> -->
+            <div class="col d-flex justify-content-end">
+                <button type="button" (click)="cancelar()" class="btn btn-light btn-active-light-primary me-2">Cancel</button>
+                <button type="submit" class="btn btn-primary" id="kt_account_profile_details_submit">GUARDAR</button>
+            </div>
+
+        </div>
+          <!--end::Actions-->
+        </form>
+        <!--end::Form-->
+    </div>
+    <!--end::Content-->
+</div>
+<!--end::Basic info-->
